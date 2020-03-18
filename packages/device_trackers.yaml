@@ -14,3 +14,7 @@ device_tracker:
 #    username: !secret traccar_user
 #    password: !secret traccar_password
 #    ssl: true
+
+  - platform: mqtt
+    devices:
+      mqtt_device_1: !secret mqtt_device_1_topic
