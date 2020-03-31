@@ -31,15 +31,6 @@
         brightness: 255
         transition: 3
 
-  - name: Main Lights
-    entities:
-      scene.spot_lights_bright:
-        state: 'on'
-      scene.dining_spots_bright:
-        state: 'on'
-      script.downlights_bright:
-        state: 'on'
-
   - name: Goodnight
     entities:
       light.yeelight_color1_34ce0084fb1d:

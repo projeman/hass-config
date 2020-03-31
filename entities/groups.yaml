@@ -56,7 +56,7 @@ lights:
   name: Lights
   entities:
     - scene.movie
-    - scene.main_lights
+    - script.main_lights
     - light.living_room_spots
     - light.dining_room_spots
     - light.reading_lamp

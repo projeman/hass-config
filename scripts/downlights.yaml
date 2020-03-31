@@ -15,3 +15,16 @@ downlights_bright:
           {% else %}
             217
           {% endif %}
+
+main_lights:
+  alias: Main lights bright
+  sequence:
+    - alias: "Living room spots"
+      service: scene.turn_on
+      entity_id: scene.spot_lights_bright
+    - alias: "Dining room spots"
+      service: scene.turn_on
+      entity_id: scene.dining_spots_bright
+    - alias: "Kitchen downlights"
+      service: scene.turn_on
+      entity_id: script.downlights_bright

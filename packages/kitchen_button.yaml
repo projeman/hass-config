@@ -81,8 +81,8 @@ automation:
             - condition: template
               value_template: "{{ states.light.living_room_spots.state == 'off' }}"
     action:
-      service: scene.turn_on
-      entity_id: scene.main_lights
+      service: script.turn_on
+      entity_id: script.main_lights
 
   - alias: Kitchen button all lights off
     trigger:

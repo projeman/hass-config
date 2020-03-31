@@ -1,4 +1,4 @@
-
+---
 - alias: 'Lights on at sunset, sunny days'
   trigger:
     - platform: sun
@@ -9,9 +9,9 @@
       entity_id: group.presence
       state: home
   action:
-    service: scene.turn_on
-    entity_id: scene.main_lights
-      
+    service: script.turn_on
+    entity_id: script.main_lights
+
 - alias: 'Lights on at sunset, cloudy days'
   trigger:
     - platform: sun
@@ -27,8 +27,8 @@
         entity_id: sensor.dark_sky_cloud_coverage
         above: 50
   action:
-    service: scene.turn_on
-    entity_id: scene.main_lights
+    service: script.turn_on
+    entity_id: script.main_lights
 
 - alias: 'Lights on if someone comes home, after sunset'
   trigger:
@@ -41,6 +41,5 @@
       after: sunset
       after_offset: "-00:20:00"
   action:
-    service: scene.turn_on
-    entity_id: scene.main_lights
-
+    service: script.turn_on
+    entity_id: script.main_lights
