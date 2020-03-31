@@ -8,7 +8,7 @@ script:
     alias: "Spot Clean"
     sequence:
       - alias: "Start spot clean"
-        service: vacuum.neato_custom_cleaning
+        service: neato.custom_cleaning
         data:
           entity_id: vacuum.marvin
           mode: 2
@@ -18,7 +18,7 @@ script:
     alias: "House Clean"
     sequence:
       - alias: "Start house clean"
-        service: vacuum.neato_custom_cleaning
+        service: neato.custom_cleaning
         data:
           entity_id: vacuum.marvin
           mode: 1
@@ -35,7 +35,7 @@ automation:
           - mon
           - fri
     action:
-      - service: vacuum.neato_custom_cleaning
+      - service: neato.custom_cleaning
         data:
           entity_id: vacuum.marvin
           mode: 1

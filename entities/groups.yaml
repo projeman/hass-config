@@ -1,18 +1,3 @@
-default_view:
-  view: yes
-  icon: mdi:home
-  entities:
-    - sun.sun
-    - !secret device_2
-    - !secret device_1
-    - group.lights
-    - group.electric_blankets
-    - group.appliances
-    - group.bedroom_1
-    - group.bedroom_2
-    - group.weather
-    - group.vacuum
-
 vacuum:
   name: "Vacuum Cleaner"
   entities:
@@ -61,8 +46,6 @@ media_tools:
 
 media:
   name: Media
-  view: yes
-  icon: mdi:music
   entities:
     - group.media_tools
     - group.media_power
@@ -118,8 +101,6 @@ internal_motion:
 
 security:
   name: Security
-  view: yes
-  icon: mdi:lock
   entities:
     - group.motion
     - group.cameras
@@ -136,8 +117,6 @@ people_status:
 
 config:
   name: Configuration
-  view: true
-  icon: mdi:settings
   entities:
     - group.people_status
     - input_boolean.on_holiday
@@ -153,8 +132,6 @@ certificates:
 
 network:
   name: Network
-  view: true
-  icon: mdi:cloud-check
   entities:
     - group.speedtest
     - group.certificates
