@@ -48,6 +48,8 @@ services:
 
   appdaemon:
     image: acockburn/appdaemon:4.0.3
+    ports:
+      - 5000:5000
     volumes:
       - /mnt/docker-data/appdaemon:/conf
       - /etc/localtime:/etc/localtime:ro
