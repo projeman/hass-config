@@ -41,6 +41,21 @@ automation:
           mode: 1
           category: 2
 
+  - alias: "Schedule vacuum early Saturday morning"
+    trigger:
+      - platform: time
+        at: "06:00:00"
+    condition:
+      - condition: time
+        weekday:
+          - sat
+    action:
+      - service: neato.custom_cleaning
+        data:
+          entity_id: vacuum.marvin
+          mode: 1
+          category: 2
+
   - alias: "Vacuum Started Notification"
     trigger:
       - platform: state
