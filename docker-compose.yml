@@ -65,3 +65,20 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/docker-data/marytts/lib/voice-dfki-poppy-hsmm-5.2.jar:/marytts/marytts-5.1.2/lib/voice-dfki-poppy-hsmm-5.2.jar:ro
     restart: always
+
+  influxdb:
+    image: influxdb:latest
+    ports:
+      - 8086:8086
+    volumes:
+      - /mnt/docker-data/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+      - /mnt/docker-data/influxdb/db:/var/lib/influxdb
+    restart: always
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - /mnt/docker-data/grafana:/var/lib/grafana
+    restart: always
