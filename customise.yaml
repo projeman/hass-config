@@ -42,9 +42,11 @@
 
     switch.kids_toothbrush_charger:
       friendly_name: !secret toothbrush_charger1_name
+      icon: mdi:toothbrush-electric
 
     switch.adults_toothbrush_charger:
       friendly_name: !secret toothbrush_charger2_name
+      icon: mdi:toothbrush-electric
 
     switch.living_room_tv_fused:
       friendly_name: "Living Room TV"
