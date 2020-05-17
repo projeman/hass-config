@@ -31,6 +31,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
     depends_on:
       - mosquitto
+      - influxdb
     restart: always
     network_mode: host
 
@@ -81,4 +82,6 @@ services:
       - 3000:3000
     volumes:
       - /mnt/docker-data/grafana:/var/lib/grafana
+    depends_on:
+      - influxdb
     restart: always

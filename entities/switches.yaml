@@ -4,13 +4,6 @@
 #    command_on: Modect
 #    command_off: Monitor
 
-  - platform: kankun
-    switches:
-      electric_blanket_1:
-        host: !secret blanket1_host
-      electric_blanket_2:
-        host: !secret blanket2_host
-
   - platform: mqtt
     name: "Kettle"
     state_topic: !secret kettle_state_topic
