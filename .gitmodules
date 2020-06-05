@@ -16,3 +16,6 @@
 [submodule "www/plugins/weather-card"]
 	path = www/plugins/weather-card
 	url = https://github.com/bramkragten/weather-card.git
+[submodule "custom_components/.zigbee2mqtt_networkmap"]
+	path = custom_components/.zigbee2mqtt_networkmap
+	url = https://github.com/rgruebel/ha_zigbee2mqtt_networkmap.git
