@@ -1,3 +1,11 @@
+---
+zigbee2mqtt_networkmap:
+
+panel_iframe:
+  networkmap:
+    title: "Zigbee Map"
+    url: '/local/community/zigbee2mqtt_networkmap/map.html'
+    icon: 'mdi:graphql'
 
 shell_command:
   restart_kodi: /home/homeassistant/.homeassistant/shell_commands/restart_kodi.sh

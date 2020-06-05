@@ -18,6 +18,8 @@ http:
   use_x_forwarded_for: True
   trusted_proxies: !secret reverse_proxy_ip
 
+webhook:
+
 # Enables support for tracking state changes over time.
 history:
 
