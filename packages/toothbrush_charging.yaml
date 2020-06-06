@@ -2,7 +2,5 @@
 switch:
   - platform: kankun
     switches:
-      kids_toothbrush_charger:
-        host: !secret toothbrush_charger1_host
       adults_toothbrush_charger:
         host: !secret toothbrush_charger2_host
