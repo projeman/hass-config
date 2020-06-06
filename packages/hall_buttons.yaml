@@ -10,7 +10,7 @@ automation:
         to: single
     condition:
       condition: template
-      value_template: "{{ states.light.kitchen_downlights.state == 'off' }}"
+      value_template: "{{ states.light.hallway.state == 'off' }}"
     action:
       service: light.turn_on
       data:
@@ -27,7 +27,7 @@ automation:
         to: single
     condition:
       condition: template
-      value_template: "{{ states.light.kitchen_downlights.state == 'on' }}"
+      value_template: "{{ states.light.hallway.state == 'on' }}"
     action:
       service: light.turn_off
       data:
@@ -43,7 +43,7 @@ automation:
         to: double
     condition:
       condition: template
-      value_template: "{{ states.light.kitchen_downlights.state == 'off' }}"
+      value_template: "{{ states.light.hallway.state == 'off' }}"
     action:
       service: light.turn_on
       data:
@@ -60,7 +60,7 @@ automation:
         to: double
     condition:
       condition: template
-      value_template: "{{ states.light.kitchen_downlights.state == 'on' }}"
+      value_template: "{{ states.light.hallway.state == 'on' }}"
     action:
       service: light.turn_off
       data:
