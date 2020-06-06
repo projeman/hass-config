@@ -1,0 +1,67 @@
+---
+automation:
+  - alias: Hall lights bright on
+    trigger:
+      - platform: state
+        entity_id: sensor.hall_button_near_click
+        to: single
+      - platform: state
+        entity_id: sensor.hall_button_far_click
+        to: single
+    condition:
+      condition: template
+      value_template: "{{ states.light.kitchen_downlights.state == 'off' }}"
+    action:
+      service: light.turn_on
+      data:
+        entity_id: light.hallway
+        brightness_pct: 100
+
+  - alias: Hall lights bright off
+    trigger:
+      - platform: state
+        entity_id: sensor.hall_button_near_click
+        to: single
+      - platform: state
+        entity_id: sensor.hall_button_far_click
+        to: single
+    condition:
+      condition: template
+      value_template: "{{ states.light.kitchen_downlights.state == 'on' }}"
+    action:
+      service: light.turn_off
+      data:
+        entity_id: light.hallway
+
+  - alias: Hall lights dim on
+    trigger:
+      - platform: state
+        entity_id: sensor.hall_button_near_click
+        to: double
+      - platform: state
+        entity_id: sensor.hall_button_far_click
+        to: double
+    condition:
+      condition: template
+      value_template: "{{ states.light.kitchen_downlights.state == 'off' }}"
+    action:
+      service: light.turn_on
+      data:
+        entity_id: light.hallway
+        brightness_pct: 1
+
+  - alias: Hall lights dim off
+    trigger:
+      - platform: state
+        entity_id: sensor.hall_button_near_click
+        to: double
+      - platform: state
+        entity_id: sensor.hall_button_far_click
+        to: double
+    condition:
+      condition: template
+      value_template: "{{ states.light.kitchen_downlights.state == 'on' }}"
+    action:
+      service: light.turn_off
+      data:
+        entity_id: light.hallway
