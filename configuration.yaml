@@ -20,6 +20,8 @@ http:
 
 webhook:
 
+mobile_app:
+
 # Enables support for tracking state changes over time.
 history:
 
