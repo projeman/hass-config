@@ -89,17 +89,17 @@ jsonlint:
         exit 1
       fi
 
-markdownlint:
-  <<: *preflight
-  image:
-    name: ruby:alpine
-    entrypoint: [""]
-  before_script:
-    - apk --no-cache add git
-    - gem install mdl
-    - mdl --version
-  script:
-    - mdl --style all --warnings --git-recurse .
+#markdownlint:
+#  <<: *preflight
+#  image:
+#    name: ruby:alpine
+#    entrypoint: [""]
+#  before_script:
+#    - apk --no-cache add git
+#    - gem install mdl
+#    - mdl --version
+#  script:
+#    - mdl --style all --warnings --git-recurse .
 
 # Home Assistant test jobs
 ha-latest:
