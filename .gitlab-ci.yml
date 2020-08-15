@@ -167,7 +167,7 @@ docker-deploy:
       - update.sh
   tags:
     - hass
-  needs: ["ha-latest"]
+  needs: ["deploy"]
 
 restart-hass:
   stage: postflight
@@ -189,3 +189,4 @@ restart-hass:
       - update.sh
   tags:
     - hass
+  needs: ["deploy"]
