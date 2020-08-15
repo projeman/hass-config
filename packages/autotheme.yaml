@@ -15,7 +15,7 @@ automation:
         data_template:
           name: >
             {% if states.sun.sun.state == "above_horizon" %}
-              Green Light Mode
+              Green light Mode
             {% else %}
               Green Dark Mode
             {% endif %}
