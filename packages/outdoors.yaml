@@ -49,8 +49,5 @@ camera:
     name: Fitzroy Beach Webcam
     still_image_url: "https://www.primowireless.co.nz/webcameras/snapshot_fitzboardriders_sth.jpg"
 
-openuv:
-  api_key: !secret openuv_api_key
-
 binary_sensor:
   - platform: iss

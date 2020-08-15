@@ -87,11 +87,7 @@ mqtt:
 #      expose: true
 
 speedtestdotnet:
-  monitored_conditions:
-    - ping
-    - download
-    - upload
-    
+
 cast:
   media_player:
     - host: !secret chromecast_host
