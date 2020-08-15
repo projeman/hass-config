@@ -142,7 +142,7 @@ deploy:
       - master
   tags:
     - hass
-  needs: ["homeassistant:ha-latest"]
+  needs: ["ha-latest"]
 
 docker-deploy:
   stage: docker-deploy
@@ -167,7 +167,7 @@ docker-deploy:
       - update.sh
   tags:
     - hass
-  needs: ["homeassistant:ha-latest"]
+  needs: ["ha-latest"]
 
 restart-hass:
   stage: postflight
