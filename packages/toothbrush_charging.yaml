@@ -4,3 +4,32 @@ switch:
     switches:
       adults_toothbrush_charger:
         host: !secret toothbrush_charger2_host
+
+automation:
+  - alias: Charge toothbrushes
+    trigger:
+      platform: time
+      #at: "22:30:00"
+      at: "14:40:00"
+    condition:
+      condition: template
+      value_template: "{% if now().day % 4 == 0 %}true{% else %}false{% endif %}"
+    action:
+      - service: switch.turn_on
+        entity_id: switch.adults_toothbrush_charger
+      - service: switch.turn_on
+        entity_id: switch.kids_toothbrush_charger
+
+  - alias: Turn off toothbrushes when charged
+    trigger:
+      platform: state
+      entity_id: switch.adults_toothbrush_charger, switch.kids_toothbrush_charger
+      to: "on"
+      for:
+        #hours: 16
+        minutes: 5
+    action:
+      service: switch.turn_off
+      data_template:
+        entity_id: "{{ trigger.entity_id }}"
+
