@@ -9,11 +9,10 @@ automation:
   - alias: Charge toothbrushes
     trigger:
       platform: time
-      #at: "22:30:00"
-      at: "14:40:00"
+      at: "22:30:00"
     condition:
       condition: template
-      value_template: "{% if now().day % 4 == 0 %}true{% else %}false{% endif %}"
+      value_template: "{% if now().day % 5 == 0 %}true{% else %}false{% endif %}"
     action:
       - service: switch.turn_on
         entity_id: switch.adults_toothbrush_charger
@@ -26,8 +25,7 @@ automation:
       entity_id: switch.adults_toothbrush_charger, switch.kids_toothbrush_charger
       to: "on"
       for:
-        #hours: 16
-        minutes: 5
+        hours: 16
     action:
       service: switch.turn_off
       data_template:
