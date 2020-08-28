@@ -5,6 +5,10 @@ switch:
       adults_toothbrush_charger:
         host: !secret toothbrush_charger2_host
 
+timer:
+  toothbrush_charger_timeout:
+    duration: "16:00:00"
+
 automation:
   - alias: Charge toothbrushes
     trigger:
@@ -18,16 +22,17 @@ automation:
         entity_id: switch.adults_toothbrush_charger
       - service: switch.turn_on
         entity_id: switch.kids_toothbrush_charger
+      - service: timer.start
+        entity_id: timer.toothbrush_charger_timeout
 
   - alias: Turn off toothbrushes when charged
     trigger:
-      platform: state
-      entity_id: switch.adults_toothbrush_charger, switch.kids_toothbrush_charger
-      to: "on"
-      for:
-        hours: 16
+      platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.toothbrush_charger_timeout
     action:
-      service: switch.turn_off
-      data_template:
-        entity_id: "{{ trigger.entity_id }}"
-
+      - service: switch.turn_off
+        entity_id: switch.adults_toothbrush_charger
+      - service: switch.turn_off
+        entity_id: switch.kids_toothbrush_charger
