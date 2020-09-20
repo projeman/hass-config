@@ -1,10 +1,4 @@
 ---
-switch:
-  - platform: kankun
-    switches:
-      adults_toothbrush_charger:
-        host: !secret toothbrush_charger2_host
-
 timer:
   toothbrush_charger_timeout:
     duration: "16:00:00"
