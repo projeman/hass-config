@@ -30,6 +30,15 @@ script:
             {% endif %}
 
 automation:
+  - alias: Switch Home Mode from NFC tag
+    trigger:
+      platform: event
+      event_type: tag_scanned
+      event_data:
+        tag_id: a1bd5e14-ae40-48cf-8005-d3a2c9a19efe
+    action:
+      service: script.home_mode
+
   - alias: Coffee/Lunchtime Lights
     trigger:
       - platform: state
