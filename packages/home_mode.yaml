@@ -19,7 +19,9 @@ script:
         data_template:
           entity_id: input_select.home_mode
           option: >
-            {% if now().hour < 12 %}
+            {% if now().hour < 7 %}
+            Bedtime
+            {% elif now().hour < 12 %}
             Coffee Time!
             {% elif now().hour < 18 %}
             Lunchtime
