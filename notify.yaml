@@ -62,8 +62,8 @@
   - name: family
     platform: group
     services:
-      - service: gotify_1
-      - service: gotify_2
+      - service: !secret notify_service1
+      - service: !secret notify_service2
 
 #  - name: all_devices
 #    platform: group
@@ -75,5 +75,5 @@
   - name: notify
     platform: group
     services:
-      - service: gotify_1
+      - service: !secret notify_service1
 
