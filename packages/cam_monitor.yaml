@@ -1,4 +1,6 @@
 ---
+# vim: set filetype=home-assistant :
+# vim: set syntax=yaml :
 switch:
   platform: kankun
   switches:
@@ -30,3 +32,43 @@ binary_sensor:
     name: "Side Lawn Camera Status"
     host: !secret cam5_host
     scan_interval: 10
+
+automation:
+  - alias: Reset cameras if connectivity lost
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.driveway_camera_status
+        to: "off"
+        for:
+          minutes: 2
+      - platform: state
+        entity_id: binary_sensor.front_lawn_camera_status
+        to: "off"
+        for:
+          minutes: 2
+      - platform: state
+        entity_id: binary_sensor.side_passage_camera_status
+        to: "off"
+        for:
+          minutes: 2
+      - platform: state
+        entity_id: binary_sensor.back_passage_camera_status
+        to: "off"
+        for:
+          minutes: 2
+      - platform: state
+        entity_id: binary_sensor.patio_camera_status
+        to: "off"
+        for:
+          minutes: 2
+      - platform: state
+        entity_id: binary_sensor.side_lawn_camera_status
+        to: "off"
+        for:
+          minutes: 2
+    action:
+      - service: switch.turn_off
+        entity_id: switch.camera_power
+      - delay: 30
+      - service: switch.turn_on
+        entity_id: switch.camera_power
