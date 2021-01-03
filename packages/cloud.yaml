@@ -1,4 +1,6 @@
 ---
+# vim: set filetype=home-assistant :
+# vim: set syntax=yaml :
 sensor:
   - platform: gitlab_ci
     name: HASS Config
