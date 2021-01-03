@@ -3,20 +3,20 @@
     platform: smtp
     server: !secret smtp_server
     port: !secret smtp_port
-    sender: !secret smtp_user 
-    starttls: 1
+    sender: !secret smtp_user
+    encryption: starttls
     username: !secret smtp_user
-    password: !secret smtp_passwd 
+    password: !secret smtp_passwd
     recipient: !secret smtp_address1
 
   - name: smtp_notify2
     platform: smtp
     server: !secret smtp_server
     port: !secret smtp_port
-    sender: !secret smtp_user 
-    starttls: 1
+    sender: !secret smtp_user
+    encryption: starttls
     username: !secret smtp_user
-    password: !secret smtp_passwd 
+    password: !secret smtp_passwd
     recipient: !secret smtp_address2
 
   - name: kodi_livingroom
