@@ -20,7 +20,7 @@ automation:
       - service: notify.smtp_notify1
         title: "[homeassistant] HASS Core Update Available"
         message: >
-          New HomeAssistant core release available: {{
+          New Home Assistant core release available: {{
           states[trigger.to_state.domain][trigger.to_state.object_id].attributes.newest_version
           }}.
 
