@@ -1,0 +1,26 @@
+---
+switch:
+  platform: kankun
+  switches:
+    camera_power:
+      host: !secret camera_power_host
+
+binary_sensor:
+  - platform: ping
+    name: "Driveway Camera Status"
+    host: !secret cam0_host
+  - platform: ping
+    name: "Front Lawn Camera Status"
+    host: !secret cam1_host
+  - platform: ping
+    name: "Side Passage Camera Status"
+    host: !secret cam2_host
+  - platform: ping
+    name: "Back Passage Camera Status"
+    host: !secret cam3_host
+  - platform: ping
+    name: "Patio Camera Status"
+    host: !secret cam4_host
+  - platform: ping
+    name: "Side Lawn Camera Status"
+    host: !secret cam5_host
