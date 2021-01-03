@@ -68,8 +68,9 @@ automation:
           minutes: 2
     action:
       - service: notify.notify
-        title: "Resetting Cameras"
-        message: "Resetting cameras due to connectivity loss to {{ trigger.from_state.attributes.friendly_name }}."
+        data:
+          title: "Resetting Cameras"
+          message: "Resetting cameras due to connectivity loss to {{ trigger.from_state.attributes.friendly_name }}."
       - service: switch.turn_off
         entity_id: switch.camera_power
       - delay: 30
