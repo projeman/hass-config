@@ -9,18 +9,24 @@ binary_sensor:
   - platform: ping
     name: "Driveway Camera Status"
     host: !secret cam0_host
+    scan_interval: 10
   - platform: ping
     name: "Front Lawn Camera Status"
     host: !secret cam1_host
+    scan_interval: 10
   - platform: ping
     name: "Side Passage Camera Status"
     host: !secret cam2_host
+    scan_interval: 10
   - platform: ping
     name: "Back Passage Camera Status"
     host: !secret cam3_host
+    scan_interval: 10
   - platform: ping
     name: "Patio Camera Status"
     host: !secret cam4_host
+    scan_interval: 10
   - platform: ping
     name: "Side Lawn Camera Status"
     host: !secret cam5_host
+    scan_interval: 10
