@@ -17,15 +17,15 @@ automation:
         entity_id: binary_sensor.updater
         to: "on"
     action:
-      service: notify.smtp_notify1
-      title: "[homeassistant] HASS Core Update Available"
-      message: >
-        New HomeAssistant core release available: {{
-        states[trigger.to_state.domain][trigger.to_state.object_id].attributes.newest_version
-        }}.
+      - service: notify.smtp_notify1
+        title: "[homeassistant] HASS Core Update Available"
+        message: >
+          New HomeAssistant core release available: {{
+          states[trigger.to_state.domain][trigger.to_state.object_id].attributes.newest_version
+          }}.
 
-        Release notes: [{{
-        states[trigger.to_state.domain][trigger.to_state.object_id].attributes.release_notes
-        }}]({{
-        states[trigger.to_state.domain][trigger.to_state.object_id].attributes.release_notes
-        }})
+          Release notes: [{{
+          states[trigger.to_state.domain][trigger.to_state.object_id].attributes.release_notes
+          }}]({{
+          states[trigger.to_state.domain][trigger.to_state.object_id].attributes.release_notes
+          }})
