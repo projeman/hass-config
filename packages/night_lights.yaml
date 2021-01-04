@@ -1,0 +1,113 @@
+---
+# vim: set filetype=home-assistant :
+# vim: set syntax=yaml :
+input_datetime:
+  wakeup_time_weekday:
+    name: Weekday Wake Up Time
+    has_date: false
+    has_time: true
+  wakeup_time_weekend_holiday:
+    name: Weekend/Holiday Wake Up Time
+    has_date: false
+    has_time: true
+
+automation:
+  - alias: 'Night light 1 on at bedtime'
+    trigger:
+      platform: time
+      at: '19:30:00'
+    action:
+      - service: light.turn_on
+        data:
+          entity_id: !secret night_light1
+          rgb_color: [255, 0, 190]
+          brightness_pct: 80
+
+  - alias: 'Night light 2 on at bedtime'
+    trigger:
+      platform: time
+      at: '19:15:00'
+    action:
+      - service: light.turn_on
+        data:
+          entity_id: !secret night_light2
+          rgb_color: [255, 0, 190]
+          brightness_pct: 80
+
+  - alias: 'Night lights red at 5am'
+    trigger:
+      platform: time
+      at: '05:00:00'
+    action:
+      - service: light.turn_on
+        data:
+          entity_id: !secret night_light1
+          rgb_color: [255, 0, 0]
+          brightness_pct: 80
+      - service: light.turn_on
+        data:
+          entity_id: !secret night_light2
+          rgb_color: [255, 0, 0]
+          brightness_pct: 80
+
+  - alias: 'Night lights green in morning (workdays)'
+    trigger:
+      platform: time
+      at: input_datetime.wakeup_time_weekday
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: 'binary_sensor.workday_sensor'
+          state: 'on'
+        - condition: state
+          entity_id: 'input_boolean.on_holiday'
+          state: 'off'
+    action:
+      - service: light.turn_on
+        data:
+          entity_id: !secret night_light1
+          rgb_color: [0, 255, 0]
+          brightness_pct: 80
+      - service: light.turn_on
+        data:
+          entity_id: !secret night_light2
+          rgb_color: [0, 255, 0]
+          brightness_pct: 80
+      - delay:
+          minutes: 15
+      - service: light.turn_off
+        entity_id: !secret night_light1
+      - service: light.turn_off
+        entity_id: !secret night_light2
+
+  - alias: 'Night light green in morning (non-workdays)'
+    trigger:
+      platform: time
+      at: input_datetime.wakeup_time_weekend_holiday
+    condition:
+      condition: or
+      conditions:
+      - condition: state
+        entity_id: 'binary_sensor.workday_sensor'
+        state: 'off'
+      - condition: state
+        entity_id: 'input_boolean.on_holiday'
+        state: 'on'
+    action:
+      - service: light.turn_on
+        data:
+          entity_id: !secret night_light1
+          rgb_color: [0, 255, 0]
+          brightness_pct: 80
+      - service: light.turn_on
+        data:
+          entity_id: !secret night_light2
+          rgb_color: [0, 255, 0]
+          brightness_pct: 80
+      - delay:
+          minutes: 15
+      - service: light.turn_off
+        entity_id: !secret night_light1
+      - service: light.turn_off
+        entity_id: !secret night_light2
