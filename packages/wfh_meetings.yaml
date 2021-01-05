@@ -1,0 +1,8 @@
+---
+# vim: set filetype=home-assistant :
+# vim: set syntax=yaml :
+binary_sensor:
+  - platform: ping
+    name: "Work Computer"
+    host: !secret work_machine
+    scan_interval: 10
