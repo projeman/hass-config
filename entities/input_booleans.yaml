@@ -1,10 +1,8 @@
 ---
 vacation_mode:
   name: Vacation Mode
-  initial: "off"
   icon: mdi:castle
 
 on_holiday:
   name: On Holiday
-  initial: "off"
   icon: mdi:sunglasses
