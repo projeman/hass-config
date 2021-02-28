@@ -5,7 +5,6 @@ binary_sensor:
     name: "Weather Station Battery OK"
     payload_on: "1"
     payload_off: "0"
-    icon: "mdi:battery-plus"
 
 sensor:
   - platform: mqtt

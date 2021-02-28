@@ -71,3 +71,6 @@
 
     sensor.temperatureandhumidity_3_1:
       friendly_name: "Greenhouse Temperature"
+
+    binary_sensor.weather_station_battery_ok:
+      icon: "mdi:battery-plus"
