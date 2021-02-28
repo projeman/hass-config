@@ -11,10 +11,12 @@ sensor:
     state_topic: "rtl_433/kili/devices/Fineoffset-WHx080/0/160/temperature_C"
     name: "Weather Station Temperature"
     device_class: temperature
+    unit_of_measurement: "°C"
   - platform: mqtt
     state_topic: "rtl_433/kili/devices/Fineoffset-WHx080/0/160/humidity"
     name: "Weather Station Humidity"
     device_class: humidity
+    unit_of_measurement: "%"
   - platform: mqtt
     state_topic: "rtl_433/kili/devices/Fineoffset-WHx080/0/160/wind_dir_deg"
     name: "Weather Station Wind Direction"
