@@ -38,17 +38,3 @@ binary_sensor:
     name: "Kitchen WallPanel AC State"
     value_template: '{% if value_json.acPlugged %}ON{% else %}OFF{% endif %}'
     device_class: plug
-
-switch:
-  - platform: mqtt
-    command_topic: "wallpanel/kitchen/command"
-    name: "Kitchen Camera State"
-    payload_on: '{"camera": true}'
-    payload_off: '{"camera": false}'
-    optimistic: true
-    retain: true
-
-camera:
-  - platform: mjpeg
-    mjpeg_url: !secret kitchen_camera_url
-    name: Kitchen Camera
