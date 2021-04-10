@@ -3,6 +3,4 @@ vacation_mode:
   name: Vacation Mode
   icon: mdi:castle
 
-on_holiday:
-  name: On Holiday
-  icon: mdi:sunglasses
+

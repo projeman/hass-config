@@ -10,6 +10,18 @@ input_datetime:
     name: Weekend/Holiday Wake Up Time
     has_date: false
     has_time: true
+  wakeup_time_quiet:
+    name: Weekend/Holiday Quiet Wake Up Time
+    has_date: false
+    has_time: true
+
+input_boolean:
+  on_holiday:
+    name: On Holiday
+    icon: mdi:sunglasses
+  quiet_time_enabled:
+    name: Weekend/Holiday Quiet Time Enabled
+    icon: mdi:human-child
 
 automation:
   - alias: 'Night light 1 on at bedtime'
@@ -48,6 +60,36 @@ automation:
         data:
           entity_id: !secret night_light2
           rgb_color: [255, 0, 0]
+          brightness_pct: 80
+
+  - alias: 'Night lights blue for quiet time'
+    trigger:
+      platform: time
+      at: input_datetime.wakeup_time_quiet
+    condition:
+      condition: and
+      conditions:
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: 'binary_sensor.workday_sensor'
+              state: 'off'
+            - condition: state
+              entity_id: 'input_boolean.on_holiday'
+              state: 'on'
+        - condition: state
+          entity_id: 'input_boolean.quiet_time_enabled'
+          state: 'on'
+    action:
+      - service: light.turn_on
+        data:
+          entity_id: !secret night_light1
+          rgb_color: [0, 0, 255]
+          brightness_pct: 80
+      - service: light.turn_on
+        data:
+          entity_id: !secret night_light2
+          rgb_color: [0, 0, 255]
           brightness_pct: 80
 
   - alias: 'Night lights green in morning (workdays)'
