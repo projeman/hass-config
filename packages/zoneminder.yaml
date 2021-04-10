@@ -22,10 +22,10 @@ automation:
       condition: and
       conditions:
         - condition: state
-          entity_id: person1_entity
+          entity_id: !secret person1_entity
           state: "away"
         - condition: state
-          entity_id: person2_entity
+          entity_id: !secret person2_entity
           state: "away"
     action:
       - service: zoneminder.set_run_state
@@ -47,10 +47,10 @@ automation:
       condition: or
       conditions:
         - condition: state
-          entity_id: person1_entity
+          entity_id: !secret person1_entity
           state: "home"
         - condition: state
-          entity_id: person2_entity
+          entity_id: !secret person2_entity
           state: "home"
     action:
       - service: zoneminder.set_run_state
