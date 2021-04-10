@@ -29,7 +29,8 @@ automation:
           state: "away"
     action:
       - service: zoneminder.set_run_state
-        name: "armed-away"
+        data:
+          name: "armed-away"
       - service: notify.gotify_1
         data:
           title: "Away mode enabled"
@@ -54,7 +55,8 @@ automation:
           state: "home"
     action:
       - service: zoneminder.set_run_state
-        name: "armed-home"
+        data:
+          name: "armed-home"
       - service: notify.gotify_1
         data:
           title: "Home mode enabled"
