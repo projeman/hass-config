@@ -17,6 +17,12 @@
     - light.yeelight_color1_34ce0084fb1d
     - light.yeelight_color1_34ce008b7b7e
 
+- platform: group
+  name: Living Room Spots
+  entities:
+    - light.living_room_spot_1
+    - light.living_room_spots_ml
+
 - platform: limitlessled
   bridges:
     - host: !secret limitlessled_host
@@ -28,7 +34,7 @@
         - number: 2
           name: Toilet
         - number: 3
-          name: Living Room Spots
+          name: Living Room Spots ML
         - number: 4
           name: Dining Room Spots
 
