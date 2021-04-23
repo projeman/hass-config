@@ -10,7 +10,7 @@ sensor:
     sensors:
       average_indoor_temperature:
         value_template: !secret indoor_temperature_template
-        unit_of_measurement: "degrees"
+        unit_of_measurement: "°C"
         device_class: "temperature"
 
 input_boolean:
