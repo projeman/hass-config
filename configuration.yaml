@@ -19,6 +19,7 @@ http:
   trusted_proxies: !secret reverse_proxy_ip
 
 prometheus:
+  namespace: hass
 
 webhook:
 
