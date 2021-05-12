@@ -9,8 +9,8 @@
 #      - condition: template
 #        value_template: "{{ states.weather.home.attributes.temperature <= 10.0 }}"
       - condition: state
-        entity_id: group.presence
-        state: "home"
+        entity_id: input_boolean.away_mode
+        state: "off"
   action:
     - service: homeassistant.turn_on
       entity_id: group.electric_blankets

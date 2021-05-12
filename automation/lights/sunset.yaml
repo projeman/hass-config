@@ -6,8 +6,8 @@
       offset: "-00:20:00"
   condition:
       condition: state
-      entity_id: group.presence
-      state: home
+      entity_id: input_boolean.away_mode
+      state: "off"
   action:
     service: script.turn_on
     entity_id: script.main_lights
@@ -21,8 +21,8 @@
     condition: and
     conditions:
       - condition: state
-        entity_id: group.presence
-        state: home
+        entity_id: input_boolean.away_mode
+        state: "off"
       - condition: numeric_state
         entity_id: sensor.dark_sky_cloud_coverage
         above: 50
@@ -33,9 +33,9 @@
 - alias: 'Lights on if someone comes home, after sunset'
   trigger:
     - platform: state
-      entity_id: group.presence
-      from: 'not_home'
-      to: 'home'
+      entity_id: input_boolean.away_mode
+      from: 'on'
+      to: 'off'
   condition:
     - condition: sun
       after: sunset

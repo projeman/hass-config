@@ -105,8 +105,8 @@ automation:
       condition: and
       conditions:
         - condition: state
-          entity_id: group.presence
-          state: home
+          entity_id: input_boolean.away_mode
+          state: "off"
         - condition: time
           after: "07:00:00"
           before: "10:00:00"
