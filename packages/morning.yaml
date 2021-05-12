@@ -58,14 +58,14 @@ automation:
       platform: time
       at: '07:00:00'
     condition:
-      condition: and
+      condition: not
       conditions:
         - condition: state
-          entity_id: !secret device_1
-          state: 'not_home'
+          entity_id: !secret person1_entity
+          state: 'home'
         - condition: state
           entity_id: 'binary_sensor.workday_sensor'
-          state: 'on'
+          state: 'off'
     action:
       - service: input_select.select_option
         data:
