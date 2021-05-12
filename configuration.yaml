@@ -89,13 +89,11 @@ cast:
     - host: !secret chromecast_host
 
 # include entity files
-input_boolean: !include entities/input_booleans.yaml
 sensor: !include entities/sensors.yaml
 binary_sensor: !include entities/binary_sensors.yaml
 climate: !include entities/heating.yaml
 light: !include entities/lights.yaml
 switch: !include entities/switches.yaml
-media_player: !include entities/media_players.yaml
 #camera: !include entities/cameras.yaml
 group: !include entities/groups.yaml
 fan: !include entities/fans.yaml
