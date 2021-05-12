@@ -1,32 +1,25 @@
-
-cast:
-  media_player:
-    - host: !secret chromecast_host
+---
+media_player:
+  - platform: snapcast
+    host: !secret musicserver_host
+  - platform: mpd
+    host: !secret musicserver_host
+    name: Mopidy
 
 binary_sensor:
-  - platform: ping
-    name: "Living Room TV state"
-    host: !secret living_room_tv_host
-    count: 1
-    scan_interval: 15
   - platform: command_line
     name: "Living Room Netflix"
     command: !secret living_room_netflix_command
     device_class: connectivity
 
 switch:
-  - platform: template
-    switches:
-      living_room_tv_fused:
-        value_template: "{{ is_state('binary_sensor.living_room_tv_state', 'on') }}"
-        turn_on:
-          service: switch.turn_on
-          data:
-            entity_id: switch.living_room_tv
-        turn_off:
-          service: switch.turn_off
-          data:
-            entity_id: switch.living_room_tv
+  - platform: mqtt
+    name: "Living Room TV"
+    command_topic: "tv/livingroom/cec/0/cmd"
+    payload_on: "on"
+    payload_off: "off"
+    state_topic: "tv/livingroom/cec/0"
+    availability_topic: "tv/livingroom/bridge/status"
 
 automation:
   - alias: "Mute outdoor speakers when powered down"
@@ -80,7 +73,7 @@ automation:
     action:
       - service: switch.turn_off
         data:
-          entity_id: switch.living_room_tv_fused
+          entity_id: switch.living_room_tv
       - condition: and
         conditions:
           - condition: state
