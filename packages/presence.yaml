@@ -13,12 +13,12 @@ automation:
   - alias: "Activate Away Mode"
     trigger:
       - platform: state
-        entity_id: person1_entity
+        entity_id: !secret person1_entity
         from: 'home'
         for:
           minutes: 5
       - platform: state
-        entity_id: person2_entity
+        entity_id: !secret person2_entity
         from: 'home'
         for:
           minutes: 5
@@ -26,10 +26,10 @@ automation:
       condition: not
       conditions:
         - condition: state
-          entity_id: person1_entity
+          entity_id: !secret person1_entity
           state: 'home'
         - condition: state
-          entity_id: person2_entity
+          entity_id: !secret person2_entity
           state: 'home'
     action:
       - service: switch.turn_off
@@ -51,10 +51,10 @@ automation:
   - alias: "Deactivate Away Mode"
     trigger:
       - platform: state
-        entity_id: person1_entity
+        entity_id: !secret person1_entity
         to: 'home'
       - platform: state
-        entity_id: person2_entity
+        entity_id: !secret person2_entity
         to: 'home'
     action:
       - service: input_boolean.turn_off
