@@ -23,6 +23,8 @@ variables:
   before_script:
     - python -m homeassistant --version
     - mv fake_secrets.yaml secrets.yaml
+    # remove files which fail CI checks due to HACS installed addons
+    - rm packages/network_map.yaml
   script:
     - |
       python -m homeassistant \

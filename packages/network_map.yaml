@@ -1,0 +1,4 @@
+---
+# this breaks in CI due to integration being installed via HACS
+# this file will be deleted in the CI checks to prevent this so WILL NOT be checked
+zigbee2mqtt_networkmap:
