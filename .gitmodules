@@ -1,6 +1,0 @@
-[submodule "apps/occusim"]
-	path = apps/occusim
-	url = https://github.com/acockburn/occusim.git
-[submodule "custom_components/.zigbee2mqtt_networkmap"]
-	path = custom_components/.zigbee2mqtt_networkmap
-	url = https://github.com/rgruebel/ha_zigbee2mqtt_networkmap.git
