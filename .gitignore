@@ -14,3 +14,5 @@ broadlink-env/
 shell_commands/__pycache__/
 __pycache__/
 ip_bans.yaml
+custom_components/
+id_rsa*
