@@ -1,0 +1,30 @@
+---
+automation:
+  - alias: 'Kettle off at night'
+    id: kettle_off_night
+    trigger:
+      platform: time
+      at: "23:00:00"
+    condition:
+      condition: state
+      entity_id: switch.kettle
+      state: 'on'
+    action:
+      - service: switch.turn_off
+        entity_id: switch.kettle
+      - service: notify.gotify_1
+        data:
+          title: "Set up the Kettle"
+          message: 'Remember to set up the kettle!'
+
+  # the kettle switch will almost always be on when HASS starts
+  - alias: "Sync kettle on startup"
+    id: kettle_on_startup
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
+      service: switch.turn_on
+      entity_id: switch.kettle
+
+

@@ -1,3 +1,4 @@
+---
 homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
@@ -60,7 +61,7 @@ mqtt:
   keepalive: 60
   username: !secret mqtt_username
   password: !secret mqtt_password
-  protocol: 3.1
+  protocol: "3.1.1"
   discovery: true
   discovery_prefix: homeassistant
 
@@ -107,6 +108,6 @@ zone: !include zones.yaml
 # include automation related stuff
 scene: !include scenes.yaml
 script: !include_dir_merge_named scripts/
-automation: !include_dir_merge_list automation/
+automation: !include automations.yaml
 notify: !include notify.yaml
 
