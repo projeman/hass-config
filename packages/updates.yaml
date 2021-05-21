@@ -3,6 +3,7 @@
 # vim: set syntax=yaml :
 automation:
   - alias: Notify on HACS updates
+    id: update_notify_hacs
     trigger:
       - platform: state
         entity_id: sensor.hacs
@@ -13,6 +14,7 @@ automation:
           message: "There are {{ trigger.to_state.state }} HACS updates available."
 
   - alias: Notify on HASS core update
+    id: update_notify_core
     trigger:
       - platform: state
         entity_id: binary_sensor.updater

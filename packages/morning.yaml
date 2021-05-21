@@ -1,4 +1,4 @@
-
+---
 sensor:
   - platform: command_line
     name: BBC News Summary URL
@@ -54,6 +54,7 @@ script:
 
 automation:
   - alias: 'Auto wake up'
+    id: auto_wake_up
     trigger:
       platform: time
       at: '07:00:00'
@@ -75,6 +76,7 @@ automation:
         entity_id: script.downlights_bright
 
   - alias: 'Auto wake up (weekend)'
+    id: auto_wake_up_weekend
     trigger:
       platform: time
       at: '08:00:00'
@@ -96,6 +98,7 @@ automation:
         entity_id: script.downlights_bright
 
   - alias: 'Getting Up'
+    id: getting_up
     trigger:
       platform: state
       entity_id: !secret device1_charge_status
@@ -141,4 +144,3 @@ automation:
 #      - wait_template: "{{ is_state('media_player.living_room_tv', 'stop') }}"
 #      - service: script.turn_on
 #        entity_id: script.play_news_summary
-

@@ -1,6 +1,7 @@
-
+---
 automation:
   - alias: Toilet button light bright
+    id: toilet_button_light_bright_on
     trigger:
       platform: mqtt
       topic: 'zigbee2mqtt/toilet_button'
@@ -18,6 +19,7 @@ automation:
           brightness_pct: 100
 
   - alias: Toilet button light off
+    id: toilet_button_light_bright_off
     trigger:
       platform: mqtt
       topic: 'zigbee2mqtt/toilet_button'
@@ -34,6 +36,7 @@ automation:
         entity_id: light.toilet
 
   - alias: Toilet button light dim
+    id: toilet_button_light_dim_on
     trigger:
       platform: mqtt
       topic: 'zigbee2mqtt/toilet_button'
@@ -51,6 +54,7 @@ automation:
           brightness_pct: 1
 
   - alias: Toilet button light off from dim
+    id: toilet_button_light_dim_off
     trigger:
       platform: mqtt
       topic: 'zigbee2mqtt/toilet_button'
@@ -65,4 +69,3 @@ automation:
       service: light.turn_off
       data:
         entity_id: light.toilet
-

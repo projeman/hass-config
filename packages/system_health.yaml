@@ -65,6 +65,7 @@ sensor:
 
 automation:
   - alias: Low Battery Notification
+    id: low_battery_notification
     trigger:
       - platform: numeric_state
         entity_id: sensor.test_battery
@@ -90,6 +91,7 @@ automation:
         title: "Low Battery Alert"
         message: "Device '{{ trigger.to_state.name }}' has LOW battery: {{ trigger.to_state.state }}%."
   - alias: Critical Battery Notification
+    id: critical_battery_notification
     trigger:
       - platform: numeric_state
         entity_id: sensor.test_battery
@@ -116,6 +118,7 @@ automation:
         message: "Device '{{ trigger.to_state.name }}' has CRITICAL battery: {{ trigger.to_state.state }}%."
 
   - alias: Auto-reset Room Sensors
+    id: room_sensor_auto_reset
     trigger:
       - platform: state
         entity_id: binary_sensor.toilet_sensor_status
@@ -134,6 +137,7 @@ automation:
           message: "Device '{{ trigger.to_state.name }}' was offline for 10 minutes, room sensors reset."
 
   - alias: Notify on startup
+    id: startup_notify
     trigger:
       - platform: homeassistant
         event: start
@@ -144,6 +148,7 @@ automation:
           message: "Home Assistant has been started up!"
 
   - alias: Notify on shutdown
+    id: shutdown_notify
     trigger:
       - platform: homeassistant
         event: shutdown

@@ -1,6 +1,7 @@
-
+---
 automation:
   - alias: "Night mode kitchen light on"
+    id: night_mode_kitchen_light_on
     trigger:
       - platform: state
         entity_id: binary_sensor.kitchen_hall_door_contact
@@ -17,6 +18,7 @@ automation:
           entity_id: scene.goodnight
 
   - alias: "Night mode kitchen light off"
+    id: night_mode_kitchen_light_off
     trigger:
       - platform: state
         entity_id: binary_sensor.kitchen_hall_door_contact
@@ -32,4 +34,3 @@ automation:
       - alias: Light Off
         service: light.turn_off
         entity_id: light.yeelight_color1_34ce0084fb1d
-

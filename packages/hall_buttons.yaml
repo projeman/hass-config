@@ -1,6 +1,7 @@
 ---
 automation:
   - alias: Hall lights bright on
+    id: hall_lights_bright_on
     trigger:
       - platform: state
         entity_id: sensor.hall_button_near_click
@@ -18,6 +19,7 @@ automation:
         brightness_pct: 100
 
   - alias: Hall lights bright off
+    id: hall_lights_bright_off
     trigger:
       - platform: state
         entity_id: sensor.hall_button_near_click
@@ -34,6 +36,7 @@ automation:
         entity_id: light.hallway
 
   - alias: Hall lights dim on
+    id: hall_lights_dim_on
     trigger:
       - platform: state
         entity_id: sensor.hall_button_near_click
@@ -51,6 +54,7 @@ automation:
         brightness_pct: 1
 
   - alias: Hall lights dim off
+    id: hall_lights_dim_off
     trigger:
       - platform: state
         entity_id: sensor.hall_button_near_click

@@ -11,6 +11,7 @@ input_boolean:
 
 automation:
   - alias: "Activate Away Mode"
+    id: away_mode_activate
     trigger:
       - platform: state
         entity_id: !secret person1_entity
@@ -49,6 +50,7 @@ automation:
           entity_id: input_boolean.away_mode
 
   - alias: "Deactivate Away Mode"
+    id: away_mode_deactivate
     trigger:
       - platform: state
         entity_id: !secret person1_entity

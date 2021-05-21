@@ -5,6 +5,7 @@ timer:
 
 automation:
   - alias: Charge toothbrushes
+    id: toothbrush_charge_start
     trigger:
       platform: time
       at: "22:30:00"
@@ -20,6 +21,7 @@ automation:
         entity_id: timer.toothbrush_charger_timeout
 
   - alias: Turn off toothbrushes when charged
+    id: toothbrush_charge_finish
     trigger:
       platform: event
       event_type: timer.finished

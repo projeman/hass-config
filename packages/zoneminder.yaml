@@ -11,6 +11,7 @@ camera:
 
 automation:
   - alias: "Set run mode to ARMED-AWAY when we are away"
+    id: zm_arm_away
     trigger:
       - platform: state
         entity_id:
@@ -36,7 +37,8 @@ automation:
           title: "Away mode enabled"
           message: "Cameras set to ARMED-AWAY"
 
-  - alias: "Set run mode to ARMED-HOME when we are away"
+  - alias: "Set run mode to ARMED-HOME when we are home"
+    id: zm_arm_home
     trigger:
       - platform: state
         entity_id:

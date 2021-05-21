@@ -25,6 +25,7 @@ input_boolean:
 
 automation:
   - alias: 'Night light 1 on at bedtime'
+    id: night_light1_bedtime
     trigger:
       platform: time
       at: '19:30:00'
@@ -36,6 +37,7 @@ automation:
           brightness_pct: 80
 
   - alias: 'Night light 2 on at bedtime'
+    id: night_light2_bedtime
     trigger:
       platform: time
       at: '19:15:00'
@@ -47,6 +49,7 @@ automation:
           brightness_pct: 80
 
   - alias: 'Night lights red at 5am'
+    id: night_lights_red
     trigger:
       platform: time
       at: '05:00:00'
@@ -63,6 +66,7 @@ automation:
           brightness_pct: 80
 
   - alias: 'Night lights blue for quiet time'
+    id: night_lights_blue
     trigger:
       platform: time
       at: input_datetime.wakeup_time_quiet
@@ -93,6 +97,7 @@ automation:
           brightness_pct: 80
 
   - alias: 'Night lights green in morning (workdays)'
+    id: night_lights_green_workday
     trigger:
       platform: time
       at: input_datetime.wakeup_time_weekday
@@ -124,6 +129,7 @@ automation:
         entity_id: !secret night_light2
 
   - alias: 'Night light green in morning (non-workdays)'
+    id: night_lights_green_non_workday
     trigger:
       platform: time
       at: input_datetime.wakeup_time_weekend_holiday

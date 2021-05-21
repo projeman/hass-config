@@ -1,7 +1,7 @@
-
 ---
 automation:
   - alias: "Electric blankets prompt"
+    id: electric_blankets_prompt
     trigger:
       platform: time
       at: "21:30:00"

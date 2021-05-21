@@ -1,4 +1,4 @@
-
+---
 neato:
   client_id: !secret neato_client_id
   client_secret: !secret neato_client_secret
@@ -26,6 +26,7 @@ script:
 
 automation:
   - alias: "Schedule vacuum Monday and Friday"
+    id: vacuum_schedule_mon_fri
     trigger:
       - platform: time
         at: "09:10:00"
@@ -42,6 +43,7 @@ automation:
           category: 2
 
   - alias: "Schedule vacuum early Saturday morning"
+    id: vacuum_schedule_sat
     trigger:
       - platform: time
         at: "06:00:00"
@@ -57,10 +59,10 @@ automation:
           category: 2
 
   - alias: "Vacuum Started Notification"
+    id: vacuum_started_notification
     trigger:
       - platform: state
         entity_id: vacuum.marvin
-        from: "docked"
         to: "cleaning"
     action:
       - service: notify.family
@@ -69,6 +71,7 @@ automation:
           message: "Don't Panic! Marvin the Paranoid Vacuum Cleaner has started his run."
 
   - alias: "Vacuum Stopped Notification"
+    id: vacuum_stopped_notification
     trigger:
       - platform: state
         entity_id: vacuum.marvin
@@ -81,6 +84,7 @@ automation:
           message: "Don't Panic! Marvin the Paranoid Vacuum Cleaner has finished his run (for now)."
 
   - alias: "Vacuum Error Notification"
+    id: vacuum_error_notification
     trigger:
       - platform: state
         entity_id: vacuum.marvin
@@ -93,4 +97,3 @@ automation:
             Uh oh! Looks like Marvin is in trouble.
 
             Status: {{ states.vacuum.marvin.attributes.status }}
-

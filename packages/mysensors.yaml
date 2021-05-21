@@ -17,6 +17,7 @@ input_boolean:
 
 automation:
   - alias: "Greenhouse High Temperature Notification"
+    id: greenhouse_high_notify
     trigger:
       platform: numeric_state
       entity_id: sensor.temperatureandhumidity_3_1
@@ -32,7 +33,9 @@ automation:
       data_template:
         title: "Greenhouse Temperature High!"
         message: "The greenhouse temperature is {{ states.sensor.temperatureandhumidity_3_1.state }}{{ states.sensor.temperatureandhumidity_3_1.attributes.unit_of_measurement }}. You may wish to open the door and check if the plants need watering."
+
   - alias: "Greenhouse Low Temperature Notification"
+    id: greenhouse_low_notification
     trigger:
       platform: numeric_state
       entity_id: sensor.temperatureandhumidity_3_1

@@ -23,6 +23,7 @@ switch:
 
 automation:
   - alias: "Mute outdoor speakers when powered down"
+    id: mute_outdoor_speakers
     trigger:
       platform: state
       entity_id: switch.outdoor_speakers
@@ -35,6 +36,7 @@ automation:
         is_volume_muted: true
 
   - alias: "Unmute outdoor speakers when powered up"
+    id: unmute_outdoor_speakers
     trigger:
       platform: state
       entity_id: switch.outdoor_speakers
@@ -47,6 +49,7 @@ automation:
         is_volume_muted: false
 
   - alias: 'Turn off TV if idle for 5 minutes'
+    id: tv_idle_off
     trigger:
       - platform: state
         entity_id: media_player.living_room_kodi

@@ -1,6 +1,7 @@
-
+---
 automation:
   - alias: 'Set HA theme for day and night'
+    id: day_night_theme
     trigger:
       - platform: homeassistant
         event: start
@@ -11,8 +12,8 @@ automation:
         entity_id: sun.sun
         to: below_horizon
     action:
-      - service_template: frontend.set_theme
-        data_template:
+      - service: frontend.set_theme
+        data:
           name: >
             {% if states.sun.sun.state == "above_horizon" %}
               Green light Mode

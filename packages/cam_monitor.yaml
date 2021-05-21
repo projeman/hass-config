@@ -2,10 +2,10 @@
 # vim: set filetype=home-assistant :
 # vim: set syntax=yaml :
 switch:
-  platform: kankun
-  switches:
-    camera_power:
-      host: !secret camera_power_host
+  - platform: kankun
+    switches:
+      camera_power:
+        host: !secret camera_power_host
 
 binary_sensor:
   - platform: ping
@@ -35,6 +35,7 @@ binary_sensor:
 
 automation:
   - alias: Reset cameras if connectivity lost
+    id: reset_cameras
     trigger:
       - platform: state
         entity_id: binary_sensor.driveway_camera_status

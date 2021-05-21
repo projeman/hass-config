@@ -1,4 +1,4 @@
-
+---
 tts:
   platform: marytts
   language: 'en_GB'
@@ -16,7 +16,7 @@ sensor:
 input_boolean:
   tts_enabled:
     name: TTS Announcements Enabled
-    initial: 'on'
+    initial: true
 
 script:
   tts_living_room:
@@ -37,13 +37,13 @@ script:
   tts_or_notify_living_room:
     alias: "TTS announcement or notification"
     sequence:
-      - service_template: >
+      - service: >
           {% if is_state("media_player.tv", "playing") or is_state("media_player.tv", "paused") %}
           notify.kodi_livingroom
           {% else %}
           script.tts_living_room
           {%- endif %}
-        data_template:
+        data:
           title: "Home Assistant"
           message: "{{ message }}"
           data:
@@ -53,7 +53,7 @@ script:
     alias: TTS Status Report
     sequence:
     - service: script.tts_living_room
-      data_template:
+      data:
         message: >
           {% if now().strftime("%H")|int < 12 %}
           Good morning.
@@ -72,6 +72,7 @@ script:
 
 automation:
   - alias: "Time to leave announcement"
+    id: time_to_leave_announcement
     trigger:
       - platform: time
         at: '08:20:00'
@@ -91,4 +92,3 @@ automation:
       - service: script.tts_living_room
         data:
           message: !secret message_time_to_leave
-        

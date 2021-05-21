@@ -1,6 +1,0 @@
----
-camera:
-  - platform: onvif
-    name: Garage
-    host: 10.0.2.125
-    port: 8080

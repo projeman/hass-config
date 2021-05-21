@@ -1,4 +1,4 @@
-
+---
 octoprint:
   - host: !secret octoprint_host
     api_key: !secret octoprint_api_key
@@ -16,6 +16,7 @@ camera:
 
 automation:
   - alias: Send a notice when 3D print is done
+    id: printer_notification_done
     trigger:
       - platform: state
         entity_id: binary_sensor.ender_3_printing

@@ -57,6 +57,7 @@ input_boolean:
 
 automation:
   - alias: Set soundbar power
+    id: set_soundbar_power
     trigger:
       platform: state
       entity_id: input_boolean.soundbar_power
@@ -64,6 +65,7 @@ automation:
       service: shell_command.soundbar_power_toggle
 
   - alias: Set soundbar mute
+    id: set_soundbar_mute
     trigger:
       platform: state
       entity_id: input_boolean.soundbar_mute
@@ -71,27 +73,30 @@ automation:
       service: shell_command.soundbar_mute_toggle
 
   - alias: Set soundbar source
+    id: set_soundbar_source
     trigger:
       platform: state
       entity_id: input_select.soundbar_source
     action:
-      service_template: >
+      service: >
         shell_command.{% if trigger.to_state.state == 'TV' %}soundbar_source_tv{% elif trigger.to_state.state == 'Aux' %}soundbar_source_aux{% else %}soundbar_source_bluetooth{% endif %}
 
   - alias: Set soundbar effect
+    id: set_soundbar_effect
     trigger:
       platform: state
       entity_id: input_select.soundbar_effect
     action:
-      service_template: >
+      service: >
         shell_command.{% if trigger.to_state.state == 'Movie' %}soundbar_effect_movie{% elif trigger.to_state.state == 'Night' %}soundbar_effect_night{% else %}soundbar_effect_music{% endif %}
 
   - alias: Set soundbar voice adjust
+    id: set_soundbar_voice_adjust
     trigger:
       platform: state
       entity_id: input_select.soundbar_voice_adjust
     action:
-      service_template: >
+      service: >
         shell_command.{% if trigger.to_state.state == 'Level 1' %}soundbar_voice_adjust_1{% elif trigger.to_state.state == 'Level 2' %}soundbar_voice_adjust_2{% else %}soundbar_voice_adjust_3{% endif %}
 
 script:
