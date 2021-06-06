@@ -85,3 +85,13 @@ services:
     depends_on:
       - influxdb
     restart: always
+
+  tasmoadmin:
+    image: raymondmm/tasmoadmin
+    ports:
+      - 5555:80
+    volumes:
+      - /mnt/docker-data/tasmoadmin:/data
+    depends_on:
+      - mosquitto
+    restart: always
