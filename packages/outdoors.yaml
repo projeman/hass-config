@@ -1,38 +1,8 @@
 ---
 sun:
 
-weather:
-  - platform: darksky
-    name: "Home"
-    api_key: !secret darksky_api_key
-    units: ca
-    mode: daily
 
 sensor:
-  - platform: darksky
-    api_key: !secret darksky_api_key
-    monitored_conditions:
-      - cloud_cover
-      - hourly_summary
-      - temperature_high
-      - temperature_low
-    units: ca
-    scan_interval:
-      minutes: 15
-
-  - platform: template
-    sensors:
-      air_pressure:
-        friendly_name: "Air Pressure"
-        unit_of_measurement: "hPa"
-        value_template: "{{ states.weather.home.attributes.pressure }}"
-        icon_template: "mdi:gauge"
-      wind_speed:
-        friendly_name: "Wind Speed"
-        unit_of_measurement: "km/h"
-        value_template: "{{ states.weather.home.attributes.wind_speed }}"
-        icon_template: "mdi:weather-windy"
-
   - platform: moon
 
   - platform: command_line
