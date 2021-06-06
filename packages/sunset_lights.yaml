@@ -27,7 +27,7 @@ automation:
           entity_id: input_boolean.away_mode
           state: "off"
         - condition: numeric_state
-          entity_id: sensor.dark_sky_cloud_coverage
+          entity_id: sensor.openweathermap_cloud_coverage
           above: 50
     action:
       service: script.turn_on
