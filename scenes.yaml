@@ -5,7 +5,7 @@
         state: on
         rgb_color: [0, 0, 255]
         brightness: 20
-        transition: 3
+        transition: 1
       light.lava_lamp:
         state: on
       light.dining_room_spots:
