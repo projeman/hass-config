@@ -1,0 +1,68 @@
+---
+automation:
+  - alias: Hall cupboard lights on
+    id: hall_cupboard_lights_on
+    trigger:
+      platform: state
+      entity_id:
+        - binary_sensor.hall_cupboard_door
+        - binary_sensor.hot_water_cupboard_door
+      from: "off"
+      to: "on"
+    action:
+      - service: light.turn_on
+        entity_id: light.hallway
+        data:
+          brightness_pct: 100
+
+  - alias: Hall cupboard lights off
+    id: hall_cupboard_lights_off
+    trigger:
+      platform: state
+      entity_id:
+        - binary_sensor.hall_cupboard_door
+        - binary_sensor.hot_water_cupboard_door
+      from: "on"
+      to: "off"
+      for:
+        seconds: 10
+    action:
+      - service: light.turn_off
+        entity_id: light.hallway
+          
+  - alias: Hall night light on
+    id: hall_night_light_on
+    trigger:
+      platform: state
+      entity_id:
+        - !secret bed1_door_entity
+        - !secret bed2_door_entity
+      from: "off"
+      to: "on"
+    condition:
+      condition: or
+      conditions:
+        - condition: time
+          after: "19:30:00"
+        - condition: sun
+          before: sunrise
+    action:
+      - service: light.turn_on
+        entity_id: light.hallway
+        data:
+          brightness_pct: 1
+
+  - alias: Hall night light off
+    id: hall_night_light_off
+    trigger:
+      platform: state
+      entity_id:
+        - !secret bed1_door_entity
+        - !secret bed2_door_entity
+      from: "on"
+      to: "off"
+      for:
+        seconds: 10
+    action:
+      - service: light.turn_off
+        entity_id: light.hallway
