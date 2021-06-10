@@ -21,7 +21,8 @@
   name: Living Room Spots
   entities:
     - light.living_room_spot_1
-    - light.living_room_spots_ml
+    - light.living_room_spot_2
+    - light.living_room_spot_3
 
 - platform: limitlessled
   bridges:
@@ -33,8 +34,6 @@
           name: Hallway
         - number: 2
           name: Toilet
-        - number: 3
-          name: Living Room Spots ML
         - number: 4
           name: Dining Room Spots
 
