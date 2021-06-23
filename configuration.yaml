@@ -27,6 +27,8 @@ webhook:
 mobile_app:
 
 my:
+  
+stream:
 
 # Enables support for tracking state changes over time.
 history:
