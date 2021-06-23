@@ -2,6 +2,9 @@
 homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
+  # Internal and external URLs
+  external_url: !secret base_url
+  internal_url: !secret base_url
   # Location required to calculate the time the sun rises and sets
   latitude: !secret home_latitude
   longitude: !secret home_longitude
