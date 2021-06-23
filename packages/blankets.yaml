@@ -8,8 +8,9 @@ automation:
     condition:
       condition: and
       conditions:
-  #      - condition: template
-  #        value_template: "{{ states.weather.home.attributes.temperature <= 10.0 }}"
+        - condition: numeric_state
+          entity_id: sensor.weather_station_temperature
+          below: 10.0
         - condition: state
           entity_id: input_boolean.away_mode
           state: "off"
@@ -20,4 +21,3 @@ automation:
         data:
            title: "It's cold tonight!"
            message: "Go and make sure the electric blankets are turned on."
-
