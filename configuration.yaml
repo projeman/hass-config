@@ -20,6 +20,8 @@ http:
   use_x_forwarded_for: True
   trusted_proxies: !secret reverse_proxy_ip
 
+websocket_api:
+
 prometheus:
   namespace: hass
 
