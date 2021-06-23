@@ -12,7 +12,7 @@ weather:
     wind_bearing_template: "{{ states('sensor.weather_station_wind_direction') }}"
     ozone_template: "{{ states('sensor.current_ozone_level') }}"
     #visibility_template: # TODO
-    forecast_template: "{{ states('sensor.openweathermap_forecast_condition') }}"
+    forecast_template: "{{ states.weather.openweathermap.attributes.forecast }}"
 
 binary_sensor:
   - platform: mqtt
