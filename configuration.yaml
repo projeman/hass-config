@@ -14,6 +14,7 @@ homeassistant:
   packages: !include_dir_named packages
 
 http:
+  base_url: !secret base_url
   ip_ban_enabled: True
   login_attempts_threshold: 5
   use_x_forwarded_for: True
