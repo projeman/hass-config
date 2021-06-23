@@ -63,6 +63,15 @@ automation:
       to: "off"
       for:
         seconds: 10
+    condition:
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: !secret bed1_door_entity
+            state: "off"
+          - condition: state   
+            entity_id: !secret bed2_door_entity
+            state: "off"
     action:
       - service: light.turn_off
         entity_id: light.hallway
