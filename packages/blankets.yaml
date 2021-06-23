@@ -16,7 +16,7 @@ automation:
     action:
       - service: homeassistant.turn_on
         entity_id: group.electric_blankets
-      - service: notify.gotify_1
+      - service: !secret notify_service1
         data:
            title: "It's cold tonight!"
            message: "Go and make sure the electric blankets are turned on."
