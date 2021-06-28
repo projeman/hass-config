@@ -1,6 +1,35 @@
-version: '3'
+version: '3.9'
 
 services:
+
+  traefik:
+    image: traefik:latest
+    depends_on:
+      - frigate
+    command:
+      - "--accesslog=true"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.mydnschallenge.acme.dnschallenge=true"
+      - "--certificatesresolvers.mydnschallenge.acme.dnschallenge.provider=linodev4"
+      - "--certificatesresolvers.mydnschallenge.acme.email=rob@webworxshop.com"
+      - "--certificatesresolvers.mydnschallenge.acme.storage=/letsencrypt/acme.json"
+    volumes:
+      - /mnt/docker-data/traefik-eomer:/letsencrypt
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8081:8080"
+    environment:
+      - LINODE_TOKEN=ccea43b80ac7fc52089eb21f032a07f934982e1d405de3ddc841b44d98f46c10
+    networks:
+      - external
+    restart: always
+
   mosquitto:
     image: eclipse-mosquitto
     restart: always
@@ -47,16 +76,16 @@ services:
       - homeassistant
     restart: always
 
-  appdaemon:
-    image: acockburn/appdaemon:4.0.3
-    ports:
-      - 5000:5000
-    volumes:
-      - /mnt/docker-data/appdaemon:/conf
-      - /etc/localtime:/etc/localtime:ro
-    depends_on:
-      - homeassistant
-    restart: always
+#  appdaemon:
+#    image: acockburn/appdaemon:4.0.3
+#    ports:
+#      - 5000:5000
+#    volumes:
+#      - /mnt/docker-data/appdaemon:/conf
+#      - /etc/localtime:/etc/localtime:ro
+#    depends_on:
+#      - homeassistant
+#    restart: always
 
   marytts:
     image: sliversniper/marytts
@@ -95,3 +124,38 @@ services:
     depends_on:
       - mosquitto
     restart: always
+
+  frigate:
+    privileged: true
+    restart: unless-stopped
+    image: frigate
+    devices:
+      - /dev/bus/usb:/dev/bus/usb
+      - /dev/dri/card0
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/docker-data/home-assistant/frigate.yml:/config/config.yml:ro
+      - /mnt/cctv/frigate:/media/frigate
+      - type: tmpfs
+        target: /tmp/cache
+        tmpfs:
+          size: 1000000000
+    labels:
+      - 'traefik.enable=true'
+      - "traefik.http.middlewares.frigate_redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.frigate_insecure.rule=Host(`frigate.home.webworxshop.com`)"
+      - "traefik.http.routers.frigate_insecure.entrypoints=web"
+      - "traefik.http.routers.frigate_insecure.middlewares=frigate_redirect@docker"
+      - "traefik.http.routers.frigate.rule=Host(`frigate.home.webworxshop.com`)"
+      - "traefik.http.routers.frigate.entrypoints=websecure"
+      - "traefik.http.routers.frigate.tls.certresolver=mydnschallenge"
+      - "traefik.http.services.frigate.loadbalancer.server.port=5000"
+    networks:
+      - external
+    ports:
+      - "1935:1935"
+    env_file:
+      - frigate.env
+
+networks:
+  external: 

@@ -1,0 +1,20 @@
+mqtt:
+  host: {FRIGATE_MQTT_HOST}
+  user: {FRIGATE_MQTT_USER}
+  password: {FRIGATE_MQTT_PASSWORD}
+
+detectors:
+   cpu:
+     type: cpu
+
+cameras:
+  back:
+    ffmpeg:
+      inputs:
+        - path: rtsp://{FRIGATE_CAM_USER}:{FRIGATE_CAM_FRONTLAWN_PASSWORD}@{FRIGATE_CAM_FRONTLAWN_IP}:554/channel=1_stream=0.sdp?real_stream
+          roles:
+            - detect
+            - rtmp
+    width: 1920
+    height: 1080
+    fps: 5
