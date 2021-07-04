@@ -97,8 +97,8 @@ automation:
         entity_id: input_select.home_mode
         to: "Bedtime"
     action:
-      - service: script.turn_on
-        entity_id: script.bedtime
+      - service: script.bedtime
+      - service: script.enable_camera_detect
       - service: input_select.select_option
         data:
           entity_id: input_select.home_mode

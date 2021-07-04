@@ -1,0 +1,99 @@
+---
+script:
+  enable_camera_detect:
+    alias: Enable camera detection
+    sequence:
+      - service: switch.turn_on
+        target:
+          entity_id:
+            - switch.front_lawn_detect
+            - switch.driveway_detect
+            - switch.side_passage_detect
+            - switch.back_passage_detect
+            - switch.patio_detect
+            - switch.side_lawn_detect
+            - switch.garage_detect
+          
+  disable_camera_detect:
+    alias: Disable camera detection on non-critcal cameras
+    sequence:
+      - service: switch.turn_off
+        target:
+          entity_id:
+            - switch.side_passage_detect
+            - switch.back_passage_detect
+            - switch.patio_detect
+            - switch.side_lawn_detect
+            - switch.garage_detect
+              
+  outdoor_camera_detect:
+    alias: Enable camera detection on outdoor cameras
+    sequence:
+      - service: switch.turn_on
+        target:
+          entity_id:
+            - switch.front_lawn_detect
+            - switch.driveway_detect
+            - switch.side_passage_detect
+            - switch.back_passage_detect
+            - switch.patio_detect
+            - switch.side_lawn_detect
+          
+automation:
+  - alias: Enable camera detection when everyone away
+    id: enable_camera_detect_away
+    trigger:
+      - platform: state
+        entity_id: !secret person1_entity
+        from: 'home'
+        for:
+          minutes: 5
+      - platform: state
+        entity_id: !secret person2_entity
+        from: 'home'
+        for:
+          minutes: 5
+      - platform: homeassistant
+        event: start
+    condition:
+      condition: not
+      conditions:
+        - condition: state
+          entity_id: !secret person1_entity
+          state: 'home'
+        - condition: state
+          entity_id: !secret person2_entity
+          state: 'home'
+    action:
+      - service: script.enable_camera_detect
+      
+  - alias: "Disable camera detection when someone home"
+    id: disable_camera_detect_home
+    trigger:
+      - platform: state
+        entity_id: !secret person1_entity
+        to: 'home'
+      - platform: state
+        entity_id: !secret person2_entity
+        to: 'home'
+      - platform: homeassistant
+        event: start
+    condition:
+      condition: or
+      conditions:
+        - condition: state
+          entity_id: !secret person1_entity
+          state: 'home'
+        - condition: state
+          entity_id: !secret person2_entity
+          state: 'home'
+    action:
+      - service: script.disable_camera_detect
+
+  - alias: "Enable outdoor cameras at sundown"
+    id: outdoor_camera_detect_sundown
+    trigger:
+      - platform: sun
+        event: sunset
+    action:
+      - service: script.outdoor_camera_detect

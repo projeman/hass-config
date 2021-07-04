@@ -72,8 +72,8 @@ automation:
         data:
           entity_id: input_select.home_mode
           option: None
-      - service: script.turn_on
-        entity_id: script.downlights_bright
+      - service: script.downlights_bright
+      - service: script.disable_camera_detect
 
   - alias: 'Auto wake up (weekend)'
     id: auto_wake_up_weekend
@@ -94,8 +94,8 @@ automation:
         data:
           entity_id: input_select.home_mode
           option: None
-      - service: script.turn_on
-        entity_id: script.downlights_bright
+      - service: script.downlights_bright
+      - service: script.disable_camera_detect
 
   - alias: 'Getting Up'
     id: getting_up
@@ -118,8 +118,8 @@ automation:
         data:
           entity_id: input_select.home_mode
           option: None
-      - service: script.turn_on
-        entity_id: script.downlights_bright
+      - service: script.downlights_bright
+      - service: script.disable_camera_detect
       - service: switch.turn_on
         data:
           entity_id: switch.kettle
