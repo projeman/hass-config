@@ -1,20 +1,169 @@
 mqtt:
-  host: {FRIGATE_MQTT_HOST}
-  user: {FRIGATE_MQTT_USER}
-  password: {FRIGATE_MQTT_PASSWORD}
+  #host: "{FRIGATE_MQTT_HOST}"
+  host: "mosquitto"
+  user: "frigate"
+  password: "{FRIGATE_MQTT_PASSWORD}"
 
 detectors:
    cpu:
      type: cpu
 
 cameras:
-  back:
+  front_lawn:
     ffmpeg:
       inputs:
-        - path: rtsp://{FRIGATE_CAM_USER}:{FRIGATE_CAM_FRONTLAWN_PASSWORD}@{FRIGATE_CAM_FRONTLAWN_IP}:554/channel=1_stream=0.sdp?real_stream
+        - path: "rtsp://{FRIGATE_CAM_FRONTLAWN_IP}:554/user={FRIGATE_CAM_USER}_password={FRIGATE_CAM_FRONTLAWN_PASSWORD}_channel=1_stream=1.sdp?real_stream"
           roles:
             - detect
+            - record
             - rtmp
-    width: 1920
-    height: 1080
+        - path: "rtsp://{FRIGATE_CAM_FRONTLAWN_IP}:554/user={FRIGATE_CAM_USER}_password={FRIGATE_CAM_FRONTLAWN_PASSWORD}_channel=1_stream=0.sdp?real_stream"
+          roles:
+            - clips
+    width: 704
+    height: 576
     fps: 5
+    clips:
+      enabled: True
+    record:
+      enabled: True
+    objects:
+      track:
+        - person
+        - car
+        - bicycle
+        - motorcycle
+
+  driveway:
+    ffmpeg:
+      inputs:
+        - path: "rtsp://{FRIGATE_CAM_DRIVEWAY_IP}:554/user={FRIGATE_CAM_USER}_password={FRIGATE_CAM_DRIVEWAY_PASSWORD}_channel=1_stream=1.sdp?real_stream"
+          roles:
+            - detect
+            - record
+            - rtmp
+        - path: "rtsp://{FRIGATE_CAM_DRIVEWAY_IP}:554/user={FRIGATE_CAM_USER}_password={FRIGATE_CAM_DRIVEWAY_PASSWORD}_channel=1_stream=0.sdp?real_stream"
+          roles:
+            - clips
+    width: 704
+    height: 576
+    fps: 5
+    clips:
+      enabled: True
+    record:
+      enabled: True
+    objects:
+      track:
+        - person
+        - car
+        - bicycle
+        - motorcycle
+
+  side_passage:
+    ffmpeg:
+      inputs:
+        - path: "rtsp://{FRIGATE_CAM_SIDEPASS_IP}:554/user={FRIGATE_CAM_USER}_password={FRIGATE_CAM_SIDEPASS_PASSWORD}_channel=1_stream=1.sdp?real_stream"
+          roles:
+            - detect
+            - record
+            - rtmp
+        - path: "rtsp://{FRIGATE_CAM_SIDEPASS_IP}:554/user={FRIGATE_CAM_USER}_password={FRIGATE_CAM_SIDEPASS_PASSWORD}_channel=1_stream=0.sdp?real_stream"
+          roles:
+            - clips
+    width: 704
+    height: 576
+    fps: 5
+    clips:
+      enabled: True
+    record:
+      enabled: True
+    objects:
+      track:
+        - person
+        
+  back_passage:
+    ffmpeg:
+      inputs:
+        - path: "rtsp://{FRIGATE_CAM_BACKPASS_IP}:554/user={FRIGATE_CAM_USER}_password={FRIGATE_CAM_BACKPASS_PASSWORD}_channel=1_stream=1.sdp?real_stream"
+          roles:
+            - detect
+            - record
+            - rtmp
+        - path: "rtsp://{FRIGATE_CAM_BACKPASS_IP}:554/user={FRIGATE_CAM_USER}_password={FRIGATE_CAM_BACKPASS_PASSWORD}_channel=1_stream=0.sdp?real_stream"
+          roles:
+            - clips
+    width: 704
+    height: 576
+    fps: 5
+    clips:
+      enabled: True
+    record:
+      enabled: True
+    objects:
+      track:
+        - person
+
+  patio:
+    ffmpeg:
+      inputs:
+        - path: "rtsp://{FRIGATE_CAM_PATIO_IP}:554/user={FRIGATE_CAM_USER}_password={FRIGATE_CAM_PATIO_PASSWORD}_channel=1_stream=1.sdp?real_stream"
+          roles:
+            - detect
+            - record
+            - rtmp
+        - path: "rtsp://{FRIGATE_CAM_PATIO_IP}:554/user={FRIGATE_CAM_USER}_password={FRIGATE_CAM_PATIO_PASSWORD}_channel=1_stream=0.sdp?real_stream"
+          roles:
+            - clips
+    width: 704
+    height: 576
+    fps: 5
+    clips:
+      enabled: True
+    record:
+      enabled: True
+    objects:
+      track:
+        - person
+
+  side_lawn:
+    ffmpeg:
+      inputs:
+        - path: "rtsp://{FRIGATE_CAM_SIDELAWN_IP}:554/user={FRIGATE_CAM_USER}_password={FRIGATE_CAM_SIDELAWN_PASSWORD}_channel=1_stream=1.sdp?real_stream"
+          roles:
+            - detect
+            - record
+            - rtmp
+        - path: "rtsp://{FRIGATE_CAM_SIDELAWN_IP}:554/user={FRIGATE_CAM_USER}_password={FRIGATE_CAM_SIDELAWN_PASSWORD}_channel=1_stream=0.sdp?real_stream"
+          roles:
+            - clips
+    width: 704
+    height: 576
+    fps: 5
+    clips:
+      enabled: True
+    record:
+      enabled: True
+    objects:
+      track:
+        - person
+          
+  garage:
+    ffmpeg:
+      inputs:
+        - path: "rtsp://{FRIGATE_CAM_USER}:{FRIGATE_CAM_GARAGE_PASSWORD}@{FRIGATE_CAM_GARAGE_IP}:554/11"
+          roles:
+            - detect
+            - record
+            - rtmp
+            - clips
+    width: 1280
+    height: 720
+    fps: 5
+    clips:
+      enabled: True
+    record:
+      enabled: True
+    objects:
+      track:
+        - person
+        - car

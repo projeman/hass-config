@@ -36,6 +36,7 @@ my:
   
 stream:
 
+media_source:
 # Enables support for tracking state changes over time.
 history:
 
