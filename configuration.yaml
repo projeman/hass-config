@@ -35,8 +35,9 @@ mobile_app:
 my:
   
 stream:
-
+  
 media_source:
+
 # Enables support for tracking state changes over time.
 history:
 
@@ -95,10 +96,6 @@ mqtt:
 #      expose: true
 
 speedtestdotnet:
-
-cast:
-  media_player:
-    - host: !secret chromecast_host
 
 # include entity files
 sensor: !include entities/sensors.yaml
