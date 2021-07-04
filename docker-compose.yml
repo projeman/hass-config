@@ -54,7 +54,7 @@ services:
     network_mode: host
 
   homeassistant:
-    image: homeassistant/home-assistant:2021.5.5
+    image: homeassistant/home-assistant:2021.6.6
     volumes:
       - /mnt/docker-data/home-assistant:/config
       - /etc/localtime:/etc/localtime:ro
@@ -128,13 +128,13 @@ services:
   frigate:
     privileged: true
     restart: unless-stopped
-    image: frigate
+    image: blakeblackshear/frigate:stable-amd64
     devices:
       - /dev/bus/usb:/dev/bus/usb
       - /dev/dri/card0
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /mnt/docker-data/home-assistant/frigate.yml:/config/config.yml:ro
+      - /mnt/docker-data/home-assistant/frigate.yaml:/config/config.yml:ro
       - /mnt/cctv/frigate:/media/frigate
       - type: tmpfs
         target: /tmp/cache
