@@ -14,6 +14,7 @@ automation:
         entity_id: light.hallway
         data:
           brightness_pct: 100
+          color_name: white
 
   - alias: Hall cupboard lights off
     id: hall_cupboard_lights_off
@@ -51,6 +52,7 @@ automation:
         entity_id: light.hallway
         data:
           brightness_pct: 1
+          color_name: white
 
   - alias: Hall night light off
     id: hall_night_light_off
