@@ -15,6 +15,11 @@ homeassistant:
 
   customize: !include customise.yaml
   packages: !include_dir_named packages
+    
+default_config:
+  
+logger:
+  default: warn
 
 http:
   base_url: !secret base_url

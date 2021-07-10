@@ -26,8 +26,6 @@ services:
       - "8081:8080"
     environment:
       - LINODE_TOKEN=ccea43b80ac7fc52089eb21f032a07f934982e1d405de3ddc841b44d98f46c10
-    networks:
-      - external
     restart: always
 
   mosquitto:
@@ -150,12 +148,7 @@ services:
       - "traefik.http.routers.frigate.entrypoints=websecure"
       - "traefik.http.routers.frigate.tls.certresolver=mydnschallenge"
       - "traefik.http.services.frigate.loadbalancer.server.port=5000"
-    networks:
-      - external
     ports:
       - "1935:1935"
     env_file:
       - frigate.env
-
-networks:
-  external: 
