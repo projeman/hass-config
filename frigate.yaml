@@ -33,6 +33,11 @@ cameras:
         - car
         - bicycle
         - motorcycle
+    zones:
+      drive:
+        coordinates: 311,200,536,91,704,83,704,452,616,424,284,317,82,255
+      lawn:
+        coordinates: 704,576,704,470,467,385,241,296,130,282,0,296,0,576
 
   driveway:
     ffmpeg:
@@ -58,6 +63,9 @@ cameras:
         - car
         - bicycle
         - motorcycle
+    zones:
+      drive:
+        coordinates: 704,576,704,283,619,292,510,300,368,296,227,295,103,286,0,259,0,576
 
   side_passage:
     ffmpeg:
@@ -124,6 +132,7 @@ cameras:
     objects:
       track:
         - person
+        - cat
 
   side_lawn:
     ffmpeg:
