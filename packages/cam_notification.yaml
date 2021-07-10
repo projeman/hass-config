@@ -1,0 +1,17 @@
+---
+automation:
+  - alias: Notify when person on driveway
+    id: camera_notify_person_driveway
+    trigger:
+      platform: mqtt
+      topic: frigate/events
+    condition:
+      - "{{ trigger.payload_json['after']['label'] == 'person' }}"
+      - "{{ 'drive' in trigger.payload_json['after']['entered_zones'] }}"
+    action:
+      - service: !secret notify_entity1
+        data_template:
+          message: "A {{trigger.payload_json['after']['label']}} is on the driveway."
+          data:
+            image: "https://home.webworxshop.com/api/frigate/notifications/{{trigger.payload_json['after']['id']}}/thumbnail.jpg"
+            tag: "{{trigger.payload_json['after']['id']}}"
