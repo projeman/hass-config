@@ -1,0 +1,17 @@
+---
+automation:
+  - alias: Monitor printer ink levels
+    id: printer_ink_monitor
+    trigger:
+      - platform: numeric_state
+        entity_id:
+          - sensor.epson_et_4700_series_cyan_ink
+          - sensor.epson_et_4700_series_magenta_ink
+          - sensor.epson_et_4700_series_yellow_ink
+          - sensor.epson_et_4700_series_black_ink
+        below: 41.0
+    action:
+      - service: notify.family
+        data:
+          title: Printer Ink Level Low
+          message: "{{ trigger.to_state.attributes.friendly_name }} is at {{ trigger.to_state.state }}%"
