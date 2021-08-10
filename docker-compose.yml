@@ -52,7 +52,7 @@ services:
     network_mode: host
 
   homeassistant:
-    image: homeassistant/home-assistant:2021.7
+    image: homeassistant/home-assistant:2021.8
     volumes:
       - /mnt/docker-data/home-assistant:/config
       - /etc/localtime:/etc/localtime:ro
@@ -63,7 +63,7 @@ services:
     network_mode: host
 
   nodered:
-    image: nodered/node-red-docker:v8
+    image: nodered/node-red:latest
     ports:
       - 1880:1880
     volumes:
@@ -99,8 +99,8 @@ services:
     ports:
       - 8086:8086
     volumes:
-      - /mnt/docker-data/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
-      - /mnt/docker-data/influxdb/db:/var/lib/influxdb
+      - /mnt/docker-data/influxdb/data:/var/lib/influxdb2
+      - /mnt/docker-data/influxdb/conf:/etc/influxdb2
     restart: always
 
   grafana:
