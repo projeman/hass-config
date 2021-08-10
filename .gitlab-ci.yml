@@ -2,9 +2,9 @@
 stages:
   - preflight
   - homeassistant
-#  - deploy
-#  - docker-deploy
-#  - postflight
+  - deploy
+  - docker-deploy
+  - postflight
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
@@ -109,6 +109,7 @@ ha-latest:
   image:
     name: homeassistant/home-assistant:latest
     entrypoint: [""]
+  needs: []
 
 ha-rc:
   <<: *ha
@@ -116,6 +117,7 @@ ha-rc:
     name: homeassistant/home-assistant:rc
     entrypoint: [""]
   allow_failure: true
+  needs: []
 
 ha-dev:
   <<: *ha
@@ -123,72 +125,73 @@ ha-dev:
     name: homeassistant/home-assistant:dev
     entrypoint: [""]
   allow_failure: true
+  needs: []
 
-#deploy:
-#  stage: deploy
-#  image:
-#    name: alpine:latest
-#    entrypoint: [""]
-#  environment:
-#    name: home-assistant
-#  before_script:
-#    - apk --no-cache add openssh-client
-#    - echo "$DEPLOYMENT_SSH_KEY" > id_rsa
-#    - chmod 600 id_rsa
-#  script:
-#    - ssh -i id_rsa -o "StrictHostKeyChecking=no" $DEPLOYMENT_SSH_LOGIN "cd /mnt/docker-data/home-assistant && git fetch && git checkout $CI_COMMIT_SHA && git submodule sync --recursive && git submodule update --init --recursive"
-#  after_script:
-#    - rm id_rsa
-#  only:
-#    refs:
-#      - master
-#  tags:
-#    - hass
-#  needs: ["ha-latest"]
+deploy:
+  stage: deploy
+  image:
+    name: alpine:latest
+    entrypoint: [""]
+  environment:
+    name: home-assistant
+  before_script:
+    - apk --no-cache add openssh-client
+    - echo "$DEPLOYMENT_SSH_KEY" > id_rsa
+    - chmod 600 id_rsa
+  script:
+    - ssh -i id_rsa -o "StrictHostKeyChecking=no" $DEPLOYMENT_SSH_LOGIN "cd /mnt/docker-data/home-assistant && git fetch && git checkout $CI_COMMIT_SHA && git submodule sync --recursive && git submodule update --init --recursive"
+  after_script:
+    - rm id_rsa
+  only:
+    refs:
+      - master
+  tags:
+    - hass
+  needs: ["ha-latest"]
 
-#docker-deploy:
-#  stage: docker-deploy
-#  image:
-#    name: alpine:latest
-#    entrypoint: [""]
-#  environment:
-#    name: home-assistant
-#  before_script:
-#    - apk --no-cache add openssh-client
-#    - echo "$DEPLOYMENT_SSH_KEY" > id_rsa
-#    - chmod 600 id_rsa
-#  script:
-#    - ssh -i id_rsa -o "StrictHostKeyChecking=no" $DEPLOYMENT_SSH_LOGIN "cd /mnt/docker-data/home-assistant && ./update.sh"
-#  after_script:
-#    - rm id_rsa
-#  only:
-#    refs:
-#      - master
-#    changes:
-#      - docker-compose.yml
-#      - update.sh
-#  tags:
-#    - hass
-#  needs: ["deploy"]
+docker-deploy:
+  stage: docker-deploy
+  image:
+    name: alpine:latest
+    entrypoint: [""]
+  environment:
+    name: home-assistant
+  before_script:
+    - apk --no-cache add openssh-client
+    - echo "$DEPLOYMENT_SSH_KEY" > id_rsa
+    - chmod 600 id_rsa
+  script:
+    - ssh -i id_rsa -o "StrictHostKeyChecking=no" $DEPLOYMENT_SSH_LOGIN "cd /mnt/docker-data/home-assistant && ./update.sh"
+  after_script:
+    - rm id_rsa
+  only:
+    refs:
+      - master
+    changes:
+      - docker-compose.yml
+      - update.sh
+  tags:
+    - hass
+  needs: ["deploy"]
 
-#restart-hass:
-#  stage: postflight
-#  image:
-#    name: alpine:latest
-#    entrypoint: [""]
-#  environment:
-#    name: home-assistant
-#  before_script:
-#    - apk --no-cache add curl
-#  script:
-#    - "curl -X POST -H \"Authorization: Bearer $DEPLOYMENT_HASS_TOKEN\" -H \"Content-Type: application/json\" $DEPLOYMENT_HASS_URL/api/services/homeassistant/restart"
-#  only:
-#    refs:
-#      - master
-#  except:
-#    changes:
-#      - docker-compose.yml
-#      - update.sh
-#  tags:
-#    - hass
-#  needs: ["deploy"]
+restart-hass:
+  stage: postflight
+  image:
+    name: alpine:latest
+    entrypoint: [""]
+  environment:
+    name: home-assistant
+  before_script:
+    - apk --no-cache add curl
+  script:
+    - "curl -X POST -H \"Authorization: Bearer $DEPLOYMENT_HASS_TOKEN\" -H \"Content-Type: application/json\" $DEPLOYMENT_HASS_URL/api/services/homeassistant/restart"
+  only:
+    refs:
+      - master
+  except:
+    changes:
+      - docker-compose.yml
+      - update.sh
+  tags:
+    - hass
+  needs: ["deploy"]
