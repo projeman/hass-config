@@ -7,7 +7,7 @@ automation:
         entity_id: media_player.living_room_kodi
         to: playing
       - platform: state
-        entity_id: media_player.chromecast
+        entity_id: media_player.living_room_tv
         to: playing
     condition:
       condition: and
@@ -34,13 +34,13 @@ automation:
         entity_id: media_player.living_room_kodi
         to: idle
       - platform: state
-        entity_id: media_player.chromecast
+        entity_id: media_player.living_room_tv
         to: paused
       - platform: state
-        entity_id: media_player.chromecast
+        entity_id: media_player.living_room_tv
         to: idle
       - platform: state
-        entity_id: media_player.chromecast
+        entity_id: media_player.living_room_tv
         to: 'off'
     condition:
       condition: and
