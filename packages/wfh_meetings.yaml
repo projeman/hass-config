@@ -6,3 +6,55 @@ binary_sensor:
     name: "Work Computer"
     host: !secret work_machine
     scan_interval: 10
+      
+automation:
+  - alias: WFH Meeting Start
+    id: wfh_meeting_start
+    trigger:
+      - platform: state
+        entity_id:
+          - binary_sensor.in_meeting
+        to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id:
+                - input_boolean.on_holiday
+              state: 'on'
+            - condition: time
+              after: "15:00:00"
+        - condition: time
+          before: "20:00:00"
+    action:
+      - service: light.turn_on
+        data:
+          entity_id: light.hallway
+          color_name: red
+          brightness_pct: 50
+            
+  - alias: WFH Meeting Finish
+    id: wfh_meeting_finish
+    trigger:
+      - platform: state
+        entity_id:
+          - binary_sensor.in_meeting
+        to: 'off'
+    condition:
+      - condition: template
+        value_template: >
+          {{ states.light.hallway.attributes.rgb_color[0] == 255 and
+             states.light.hallway.attributes.rgb_color[1] == 0 and
+             states.light.hallway.attributes.rgb_color[2] == 0 }}
+    action:
+      - service: light.turn_on
+        data:
+          entity_id: light.hallway
+          color_name: green
+          brightness_pct: 50
+      - delay:
+          seconds: 30
+      - service: light.turn_off
+        entity_id: light.hallway
