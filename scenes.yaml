@@ -19,7 +19,7 @@
     entities:
       light.living_room_spots:
         state: on
-        rgb_color: [255, 255, 255]
+        color_temp: 320
         brightness: 255
         transition: 3
 
@@ -27,7 +27,7 @@
     entities:
       light.dining_room_spots:
         state: on
-        rgb_color: [255, 255, 255]
+        color_temp: 320
         brightness: 255
         transition: 3
 

@@ -24,6 +24,13 @@
     - light.living_room_spot_2
     - light.living_room_spot_3
 
+- platform: group
+  name: Dining Room Spots
+  entities:
+    - light.dining_room_spot_1
+    - light.dining_room_spot_2
+    - light.dining_room_spot_3
+
 - platform: limitlessled
   bridges:
     - host: !secret limitlessled_host
@@ -34,8 +41,8 @@
           name: Hallway
         - number: 2
           name: Toilet
-        - number: 4
-          name: Dining Room Spots
+        #- number: 4
+        #  name: Dining Room Spots
 
 - platform: mqtt
   name: "Night Light"
