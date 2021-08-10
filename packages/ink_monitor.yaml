@@ -9,7 +9,7 @@ automation:
           - sensor.epson_et_4700_series_magenta_ink
           - sensor.epson_et_4700_series_yellow_ink
           - sensor.epson_et_4700_series_black_ink
-        below: 41.0
+        below: 10
     action:
       - service: notify.family
         data:
