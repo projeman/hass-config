@@ -62,18 +62,18 @@
   - name: family
     platform: group
     services:
-      - service: !secret notify_service1
+      - service: notify.gotify_1
       - service: !secret notify_service2
 
 #  - name: all_devices
 #    platform: group
 #    services:
-#      - service: !secret notify_service1
+#      - service: notify.gotify_1
 #      - service: !secret notify_service2
 #      - service: kodi_livingroom
 
   - name: notify
     platform: group
     services:
-      - service: !secret notify_service1
+      - service: notify.gotify_1
 

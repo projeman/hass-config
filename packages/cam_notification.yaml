@@ -9,9 +9,7 @@ automation:
       - "{{ trigger.payload_json['after']['label'] == 'person' }}"
       - "{{ 'drive' in trigger.payload_json['after']['entered_zones'] }}"
     action:
-      - service: !secret notify_entity1
+      - service: notify.gotify_1
         data_template:
-          message: "A {{trigger.payload_json['after']['label']}} is on the driveway."
-          data:
-            image: "https://home.webworxshop.com/api/frigate/notifications/{{trigger.payload_json['after']['id']}}/thumbnail.jpg"
-            tag: "{{trigger.payload_json['after']['id']}}"
+          title: "A {{trigger.payload_json['after']['label']}} is on the driveway."
+          message: !secret camera_thumbnail_template_md
