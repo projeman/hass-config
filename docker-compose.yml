@@ -52,7 +52,7 @@ services:
     network_mode: host
 
   homeassistant:
-    image: homeassistant/home-assistant:2021.8
+    image: homeassistant/home-assistant:2021.9
     volumes:
       - /mnt/docker-data/home-assistant:/config
       - /etc/localtime:/etc/localtime:ro
