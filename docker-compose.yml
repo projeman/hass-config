@@ -2,32 +2,6 @@ version: '3.9'
 
 services:
 
-  traefik:
-    image: traefik:latest
-    depends_on:
-      - frigate
-    command:
-      - "--accesslog=true"
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
-      - "--certificatesresolvers.mydnschallenge.acme.dnschallenge=true"
-      - "--certificatesresolvers.mydnschallenge.acme.dnschallenge.provider=linodev4"
-      - "--certificatesresolvers.mydnschallenge.acme.email=rob@webworxshop.com"
-      - "--certificatesresolvers.mydnschallenge.acme.storage=/letsencrypt/acme.json"
-    volumes:
-      - /mnt/docker-data/traefik-eomer:/letsencrypt
-      - /var/run/docker.sock:/var/run/docker.sock
-    ports:
-      - "80:80"
-      - "443:443"
-      - "8081:8080"
-    environment:
-      - LINODE_TOKEN=ccea43b80ac7fc52089eb21f032a07f934982e1d405de3ddc841b44d98f46c10
-    restart: always
-
   mosquitto:
     image: eclipse-mosquitto
     restart: always
@@ -138,17 +112,8 @@ services:
         target: /tmp/cache
         tmpfs:
           size: 1000000000
-    labels:
-      - 'traefik.enable=true'
-      - "traefik.http.middlewares.frigate_redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.frigate_insecure.rule=Host(`frigate.home.webworxshop.com`)"
-      - "traefik.http.routers.frigate_insecure.entrypoints=web"
-      - "traefik.http.routers.frigate_insecure.middlewares=frigate_redirect@docker"
-      - "traefik.http.routers.frigate.rule=Host(`frigate.home.webworxshop.com`)"
-      - "traefik.http.routers.frigate.entrypoints=websecure"
-      - "traefik.http.routers.frigate.tls.certresolver=mydnschallenge"
-      - "traefik.http.services.frigate.loadbalancer.server.port=5000"
     ports:
       - "1935:1935"
+      - "5000:5000"
     env_file:
       - frigate.env
