@@ -27,5 +27,5 @@ automation:
       - condition: template
         value_template: "{{ now().day == 7 and now().month == 1 }}"
     action:
-      - service: input_boolean.turn_on
+      - service: input_boolean.turn_off
         entity_id: input_boolean.christmas_mode
