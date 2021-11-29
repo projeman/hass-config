@@ -1,0 +1,31 @@
+---
+# vim: set filetype=home-assistant :
+# vim: set syntax=yaml :
+input_boolean:
+  christmas_mode:
+    name: Christmas Mode
+    icon: mdi:string-lights
+
+automation:
+  - id: auto_enable_christmas_mode
+    alias: "Auto-enable Christmas Mode"
+    trigger:
+      - platform: time
+        at: "00:00:00"
+    condition:
+      - condition: template
+        value_template: "{{ now().day == 1 and now().month == 12 }}"
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.christmas_mode
+  - id: auto_disable_christmas_mode
+    alias: "Auto-disable Christmas Mode"
+    trigger:
+      - platform: time
+        at: "00:00:00"
+    condition:
+      - condition: template
+        value_template: "{{ now().day == 7 and now().month == 1 }}"
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.christmas_mode
