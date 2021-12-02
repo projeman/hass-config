@@ -24,17 +24,6 @@ automation:
       - service: scene.turn_on
         target:
           entity_id: scene.movie
-      - condition: state
-        entity_id: input_boolean.christmas_mode
-        state: "on"
-      - service: light.turn_on
-        target:
-          entity_id: light.christmas_tree
-      - service: select.select_option
-        target:
-          entity_id: select.christmas_tree_preset
-        data:
-          option: Rainbow Solid
 
   - alias: 'Bring up lights when movie paused'
     id: movie_pause_lights

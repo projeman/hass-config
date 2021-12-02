@@ -14,6 +14,10 @@
         state: on
         rgb_color: [255, 73, 255]
         brightness: 17.85
+      light.christmas_tree:
+        state: on
+      select.christmas_tree_preset:
+        state: Rainbow Solid
 
   - name: Spot Lights Bright
     entities:
