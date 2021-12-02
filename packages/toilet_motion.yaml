@@ -48,7 +48,7 @@ automation:
       from: "on"
       to: "off"
       for:
-        seconds: 30
+        seconds: 90
     action:
       - service: light.turn_off
         entity_id: light.toilet
