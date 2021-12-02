@@ -18,6 +18,7 @@ automation:
     action:
       - service: input_boolean.turn_on
         entity_id: input_boolean.christmas_mode
+
   - id: auto_disable_christmas_mode
     alias: "Auto-disable Christmas Mode"
     trigger:

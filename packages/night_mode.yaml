@@ -1,4 +1,6 @@
 ---
+# vim: set filetype=home-assistant :
+# vim: set syntax=yaml :
 automation:
   - alias: "Night mode kitchen light on"
     id: night_mode_kitchen_light_on
