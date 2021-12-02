@@ -30,3 +30,51 @@ automation:
     action:
       - service: input_boolean.turn_off
         entity_id: input_boolean.christmas_mode
+
+  - id: christmas_tree_on_afternoon
+    alias: "Turn on Christmas tree in the afternoon if we're home"
+    trigger:
+      - platform: time
+        at: "15:30:00"
+    condition:
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: input_boolean.christmas_mode
+            state: "on"
+          - condition: state
+            entity_id: input_boolean.away_mode
+            state: "off"
+    action:
+      - service: light.turn_on
+        target:
+          entity_id: light.christmas_tree
+      - service: select.select_option
+        target:
+          entity_id: select.christmas_tree_preset
+        data:
+          option: Rainbow Twinkle
+
+  - id: christmas_tree_on_morning
+    alias: "Turn on Christmas tree in the morning if we're home"
+    trigger:
+      - platform: time
+        at: "07:45:00"
+    condition:
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: input_boolean.christmas_mode
+            state: "on"
+          - condition: state
+            entity_id: input_boolean.away_mode
+            state: "off"
+    action:
+      - service: light.turn_on
+        target:
+          entity_id: light.christmas_tree
+      - service: select.select_option
+        target:
+          entity_id: select.christmas_tree_preset
+        data:
+          option: Rainbow Twinkle
