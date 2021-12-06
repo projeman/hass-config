@@ -1,0 +1,24 @@
+---
+# vim: set filetype=home-assistant :
+# vim: set syntax=yaml :
+automation:
+- id: update_uv_index_data
+  alias: "Update OpenUV every 20 minutes while the sun is at least 10 degrees above the horizon"
+  trigger:
+    platform: time_pattern
+    minutes: "/20"
+  condition:
+    condition: numeric_state
+    entity_id: sun.sun
+    value_template: "{{ state.attributes.elevation }}"
+    above: 10
+  action:
+    service: openuv.update_uv_index_data
+
+- id: update_uv_protection_window
+  alias: "Update OpenUV protection window once a day"
+  trigger:
+    platform: time
+    at: "03:47:00"
+  action:
+    service: openuv.update_protection_data
