@@ -26,11 +26,11 @@ automation:
       from: "on"
       to: "off"
       for:
-        seconds: 10
+        seconds: 2
     action:
       - service: light.turn_off
         entity_id: light.hallway
-          
+
   - alias: Hall night light on
     id: hall_night_light_on
     trigger:
@@ -64,14 +64,14 @@ automation:
       from: "on"
       to: "off"
       for:
-        seconds: 10
+        seconds: 2
     condition:
       - condition: and
         conditions:
           - condition: state
             entity_id: !secret bed1_door_entity
             state: "off"
-          - condition: state   
+          - condition: state
             entity_id: !secret bed2_door_entity
             state: "off"
           - condition: state
@@ -80,7 +80,7 @@ automation:
     action:
       - service: light.turn_off
         entity_id: light.hallway
-        
+
   - alias: Hall light timeout
     id: hall_light_timeout
     trigger:
