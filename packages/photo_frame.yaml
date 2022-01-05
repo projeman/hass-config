@@ -1,0 +1,9 @@
+---
+# vim: set filetype=home-assistant :
+# vim: set syntax=yaml :
+switch:
+  - platform: kankun
+    switches:
+      photo_frame_power:
+        host: !secret photo_frame_power_host
+
