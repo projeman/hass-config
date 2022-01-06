@@ -119,6 +119,9 @@ automation:
       - service: light.turn_off
         target:
           entity_id: light.christmas_tree
+      - service: switch.turn_off
+        target:
+          entity_id: switch.photo_frame_power
       #- delay:
       #   minutes: 10
       #- service: switch.turn_off

@@ -74,6 +74,9 @@ automation:
           option: None
       - service: script.downlights_bright
       - service: script.disable_camera_detect
+      - service: switch.turn_on
+        target:
+          entity_id: switch.photo_frame_power
 
   - alias: 'Auto wake up (weekend)'
     id: auto_wake_up_weekend
@@ -96,6 +99,9 @@ automation:
           option: None
       - service: script.downlights_bright
       - service: script.disable_camera_detect
+      - service: switch.turn_on
+        target:
+          entity_id: switch.photo_frame_power
 
   - alias: 'Getting Up'
     id: getting_up
@@ -123,6 +129,9 @@ automation:
       - service: switch.turn_on
         data:
           entity_id: switch.kettle
+      - service: switch.turn_on
+        target:
+          entity_id: switch.photo_frame_power
 #      - wait_template: "{{ is_state('binary_sensor.kitchen_hall_door_contact', 'off') }}"
 #      - delay:
 #          seconds: 30

@@ -6,4 +6,3 @@ switch:
     switches:
       photo_frame_power:
         host: !secret photo_frame_power_host
-

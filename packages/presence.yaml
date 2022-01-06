@@ -54,6 +54,9 @@ automation:
       - service: light.turn_off
         target:
           entity_id: light.christmas_tree
+      - service: switch.turn_off
+        target:
+          entity_id: switch.photo_frame_power
 
   - alias: "Deactivate Away Mode"
     id: away_mode_deactivate
@@ -71,3 +74,6 @@ automation:
       - service: input_boolean.turn_off
         data:
           entity_id: input_boolean.vacation_mode
+      - service: switch.turn_on
+        target:
+          entity_id: switch.photo_frame_power
