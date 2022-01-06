@@ -15,6 +15,15 @@ script:
       - alias: "Execute restart command"
         service: shell_command.restart_kodi
 
+rest_command:
+  init_in_meeting_sensor:
+    url: !secret in_meeting_sensor_url
+    method: post
+    headers:
+      authorization: !secret hass_api_auth
+      content_type: "application/json"
+    payload: '{"state": "off"}'
+
 binary_sensor:
   - platform: mqtt
     name: "Open MQTT Gateway Status"
