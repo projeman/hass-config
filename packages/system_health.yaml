@@ -166,3 +166,11 @@ automation:
         data:
           title: "Home Assistant Shutdown"
           message: "Home Assistant is shutting down!"
+
+  - alias: Initialise HTTP Sensors
+    id: init_http_sensors
+    trigger:
+      - platform: homeassistant
+        event: start
+    action:
+      - service: rest_command.init_in_meeting_sensor
