@@ -42,6 +42,9 @@ automation:
       - service: switch.turn_off
         data:
           entity_id: switch.master_bedroom_tv
+      - service: switch.turn_off
+        target:
+          entity_id: switch.photo_frame_power
       - service: homeassistant.turn_off
         data:
           entity_id: group.lights
@@ -54,9 +57,6 @@ automation:
       - service: light.turn_off
         target:
           entity_id: light.christmas_tree
-      - service: switch.turn_off
-        target:
-          entity_id: switch.photo_frame_power
 
   - alias: "Deactivate Away Mode"
     id: away_mode_deactivate
