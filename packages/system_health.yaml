@@ -21,8 +21,8 @@ rest_command:
     method: post
     headers:
       authorization: !secret hass_api_auth
-      content_type: "application/json"
-    payload: '{"state": "off"}'
+    content_type: "application/json"
+    payload: '{"state": "off", "attributes": {"friendly_name": "Rob In Meeting"}}'
 
 binary_sensor:
   - platform: mqtt
