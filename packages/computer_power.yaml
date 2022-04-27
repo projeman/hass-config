@@ -1,21 +1,25 @@
 ---
-shell_command:
-  desktop_power_on: !secret desktop_command_on
-  desktop_power_off: !secret desktop_command_off
+rest_command:
+  wake_work_computer:
+    url: !secret opnsense_wol_url
+    method: POST
+    payload: '{"wake":{"interface": "opt9", "mac": "fc:4d:d4:39:6b:d7"}}'
+    content_type: 'application/json'
+    username: !secret opnsense_user
+    password: !secret opnsense_key
+    verify_ssl: false
 
 binary_sensor:
   - platform: ping
-    name: "Desktop Computer State"
-    host: !secret desktop_host
+    name: "Work Computer"
+    host: !secret work_machine
     count: 1
     scan_interval: 5
 
 switch:
   - platform: template
     switches:
-      desktop_computer_power:
-        value_template: "{{ is_state('binary_sensor.desktop_computer_state', 'on') }}"
+      work_computer_power:
+        value_template: "{{ is_state('binary_sensor.work_computer', 'on') }}"
         turn_on:
-          service: shell_command.desktop_power_on
-        turn_off:
-          service: shell_command.desktop_power_off
+          service: rest_command.wake_work_computer
