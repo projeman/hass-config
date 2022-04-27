@@ -23,3 +23,9 @@ binary_sensor:
 #        value_template: "{{ is_state('binary_sensor.work_computer', 'on') }}"
 #        turn_on:
 #          service: rest_command.wake_work_computer
+
+script:
+  wake_work_computer:
+    alias: "Wake Work Computer"
+    sequence:
+      - service: rest_command.wake_work_computer
