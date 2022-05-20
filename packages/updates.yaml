@@ -13,23 +13,23 @@ automation:
           title: "[homeassistant] HACS Update(s) available"
           message: "There are {{ trigger.to_state.state }} HACS updates available."
 
-  - alias: Notify on HASS core update
-    id: update_notify_core
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.updater
-        to: "on"
-    action:
-      - service: notify.smtp_notify1
-        data:
-          title: "[homeassistant] HASS Core Update Available"
-          message: >
-            New Home Assistant core release available: {{
-            states[trigger.to_state.domain][trigger.to_state.object_id].attributes.newest_version
-            }}.
-
-            Release notes: [{{
-            states[trigger.to_state.domain][trigger.to_state.object_id].attributes.release_notes
-            }}]({{
-            states[trigger.to_state.domain][trigger.to_state.object_id].attributes.release_notes
-            }})
+#  - alias: Notify on HASS core update
+#    id: update_notify_core
+#    trigger:
+#      - platform: state
+#        entity_id: binary_sensor.updater
+#        to: "on"
+#    action:
+#      - service: notify.smtp_notify1
+#        data:
+#          title: "[homeassistant] HASS Core Update Available"
+#          message: >
+#            New Home Assistant core release available: {{
+#            states[trigger.to_state.domain][trigger.to_state.object_id].attributes.newest_version
+#            }}.
+#
+#            Release notes: [{{
+#            states[trigger.to_state.domain][trigger.to_state.object_id].attributes.release_notes
+#            }}]({{
+#            states[trigger.to_state.domain][trigger.to_state.object_id].attributes.release_notes
+#            }})

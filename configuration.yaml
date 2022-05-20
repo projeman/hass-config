@@ -55,7 +55,7 @@ logbook:
 discovery:
 
 # Checks for available updates
-updater:
+#updater:
 
 # Enables the frontend
 frontend:
