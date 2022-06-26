@@ -1,21 +1,10 @@
 ---
-- platform: yeelight
-  devices:
-    !secret rl_host:
-      name: Reading Lamp
-    !secret kd1_host:
-      name: Kitchen Downlight 1
-    !secret kd2_host:
-      name: Kitchen Downlight 2
-    !secret kd3_host:
-      name: Kitchen Downlight 3
-
 - platform: group
   name: Kitchen Downlights
   entities:
     - light.yeelight_color1_34ce0084d85f
     - light.yeelight_color1_34ce0084fb1d
-    - light.yeelight_color1_34ce008b7b7e
+    - light.yeelight_color_0x35ec0c3
 
 - platform: group
   name: Living Room Spots

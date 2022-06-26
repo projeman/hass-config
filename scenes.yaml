@@ -43,7 +43,7 @@
         brightness: 18
       light.yeelight_color1_34ce0084d85f:
         state: 'off'
-      light.yeelight_color1_34ce008b7b7e:
+      light.yeelight_color_0x35ec0c3:
         state: 'off'
       light.living_room_spots:
         state: 'off'
