@@ -97,23 +97,23 @@ services:
       - mosquitto
     restart: always
 
-  frigate:
-    privileged: true
-    restart: unless-stopped
-    image: blakeblackshear/frigate:0.8.4-amd64
-    devices:
-      - /dev/bus/usb:/dev/bus/usb
-      - /dev/dri/card0
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /mnt/docker-data/home-assistant/frigate.yaml:/config/config.yml:ro
-      - /mnt/cctv/frigate:/media/frigate
-      - type: tmpfs
-        target: /tmp/cache
-        tmpfs:
-          size: 1000000000
-    ports:
-      - "1935:1935"
-      - "5000:5000"
-    env_file:
-      - frigate.env
+  #frigate:
+  #  privileged: true
+  #  restart: unless-stopped
+  #  image: blakeblackshear/frigate:0.8.4-amd64
+  #  devices:
+  #    - /dev/bus/usb:/dev/bus/usb
+  #    - /dev/dri/card0
+  #  volumes:
+  #    - /etc/localtime:/etc/localtime:ro
+  #    - /mnt/docker-data/home-assistant/frigate.yaml:/config/config.yml:ro
+  #    - /mnt/cctv/frigate:/media/frigate
+  #    - type: tmpfs
+  #      target: /tmp/cache
+  #      tmpfs:
+  #        size: 1000000000
+  #  ports:
+  #    - "1935:1935"
+  #    - "5000:5000"
+  #  env_file:
+  #    - frigate.env
