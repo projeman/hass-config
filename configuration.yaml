@@ -14,6 +14,7 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: !secret time_zone
+  currency: !secret currency
 
   customize: !include customise.yaml
   packages: !include_dir_named packages
