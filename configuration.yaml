@@ -26,7 +26,7 @@ logger:
 
 http:
   base_url: !secret base_url
-  ip_ban_enabled: True
+  ip_ban_enabled: False
   login_attempts_threshold: 5
   use_x_forwarded_for: True
   trusted_proxies: !secret reverse_proxy_ip
