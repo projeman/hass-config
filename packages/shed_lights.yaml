@@ -11,3 +11,17 @@ automation:
     action:
       - service: light.turn_off
         entity_id: light.shed_lights
+
+  - alias: "Turn on shed lights"
+    id: shed_lights_on
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.laundry_room_door
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: sun.sun
+        state: "below_horizon"
+    action:
+      - service: light.turn_on
+        entity_id: light.shed_lights
