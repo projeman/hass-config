@@ -11,3 +11,33 @@ template:
       Open
       {% endif %}
     icon: mdi:garage-variant
+
+automation:
+  - alias: "Notify if garage door left open"
+    id: garage_door_open_notification
+    trigger:
+      - platform: state
+        entity_id: sensor.garage_door
+        state: "Open"
+        for:
+          minutes: 10
+    action:
+      - service: notify.family
+        data:
+          title: "Garage door still open!"
+          message: "Garage door has been open for 10 minutes."
+
+  - alias: "Notify if pet mode left open"
+    id: garage_door_pet_mode_notification
+    trigger:
+      - platform: time
+        at: "21:00:00"
+    condition:
+      - condition: state
+        entity_id: sensor.garage_door
+        state: "Pet Mode"
+    action:
+      - service: notify.family
+        data:
+          title: "Garage door still on pet mode!"
+          message: "Garage door is still on pet mode."
