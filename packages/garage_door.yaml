@@ -1,0 +1,13 @@
+---
+template:
+  sensor:
+    name: "Garage Door"
+    state: >
+      {% if is_state("binary_sensor.garage_door_closed", "off") and is_state("binary_sensor.garage_door_pet_mode", "off") %}
+      Closed
+      {% elif is_state("binary_sensor.garage_door_closed", "on") and is_state("binary_sensor.garage_door_pet_mode", "off") %}
+      Pet Mode
+      {% else %}
+      Open
+      {% endif %}
+    icon: mdi:garage-variant
