@@ -18,7 +18,7 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.garage_door
-        state: "Open"
+        to: "Open"
         for:
           minutes: 10
     action:
