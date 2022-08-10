@@ -2,9 +2,9 @@
 - platform: group
   name: Kitchen Downlights
   entities:
-    - light.yeelight_color1_34ce0084d85f
-    - light.yeelight_color1_34ce0084fb1d
-    - light.yeelight_color_0x35ec0c3
+    - light.kitchen_downlight_1
+    - light.kitchen_downlight_2
+    - light.kitchen_downlight_3
 
 - platform: group
   name: Living Room Spots

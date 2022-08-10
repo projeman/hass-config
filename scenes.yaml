@@ -37,13 +37,13 @@
 
   - name: Goodnight
     entities:
-      light.yeelight_color1_34ce0084fb1d:
+      light.kitchen_downlight_2:
         state: 'on'
         color_temp: 253
         brightness: 18
-      light.yeelight_color1_34ce0084d85f:
+      light.kitchen_downlight_1:
         state: 'off'
-      light.yeelight_color_0x35ec0c3:
+      light.kitchen_downlight_3:
         state: 'off'
       light.living_room_spots:
         state: 'off'
