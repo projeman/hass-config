@@ -7,13 +7,14 @@ downlights_bright:
       data_template:
         entity_id: light.kitchen_downlights
         brightness: 255
+        transition: 1
         color_temp: >
           {% if as_timestamp(now()) >
               (as_timestamp(states.sun.sun.attributes.next_setting) - 3600)
               or states.sun.sun.state == 'below_horizon' %}
-            253
+            360
           {% else %}
-            217
+            260
           {% endif %}
 
 main_lights:
