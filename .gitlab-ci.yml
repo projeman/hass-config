@@ -104,11 +104,20 @@ jsonlint:
 #    - mdl --style all --warnings --git-recurse .
 
 # Home Assistant test jobs
+ha-deployed:
+  <<: *ha
+  image:
+    name: homeassistant/home-assistant:2022.5
+    entrypoint: [""]
+  allow_failure: true
+  needs: []
+
 ha-latest:
   <<: *ha
   image:
     name: homeassistant/home-assistant:latest
     entrypoint: [""]
+  allow_failure: true
   needs: []
 
 ha-rc:
