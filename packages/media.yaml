@@ -12,9 +12,9 @@ binary_sensor:
     command: !secret living_room_netflix_command
     device_class: connectivity
 
-switch:
-  - platform: mqtt
-    name: "Living Room TV"
+mqtt:
+  switch:
+  - name: "Living Room TV"
     command_topic: "tv/livingroom/cec/0/cmd"
     payload_on: "on"
     payload_off: "off"

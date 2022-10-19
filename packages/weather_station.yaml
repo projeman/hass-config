@@ -14,41 +14,35 @@ weather:
     #visibility_template: # TODO
     forecast_template: "{{ states.weather.openweathermap.attributes.forecast }}"
 
-binary_sensor:
-  - platform: mqtt
-    state_topic: "rtl_433/kili/devices/Fineoffset-WHx080/0/160/battery_ok"
+mqtt:
+  binary_sensor:
+  - state_topic: "rtl_433/kili/devices/Fineoffset-WHx080/0/160/battery_ok"
     name: "Weather Station Battery OK"
     payload_on: "1"
     payload_off: "0"
 
-sensor:
-  - platform: mqtt
-    state_topic: "rtl_433/kili/devices/Fineoffset-WHx080/0/160/temperature_C"
+  sensor:
+  - state_topic: "rtl_433/kili/devices/Fineoffset-WHx080/0/160/temperature_C"
     name: "Weather Station Temperature"
     device_class: temperature
     unit_of_measurement: "°C"
-  - platform: mqtt
-    state_topic: "rtl_433/kili/devices/Fineoffset-WHx080/0/160/humidity"
+  - state_topic: "rtl_433/kili/devices/Fineoffset-WHx080/0/160/humidity"
     name: "Weather Station Humidity"
     device_class: humidity
     unit_of_measurement: "%"
-  - platform: mqtt
-    state_topic: "rtl_433/kili/devices/Fineoffset-WHx080/0/160/wind_dir_deg"
+  - state_topic: "rtl_433/kili/devices/Fineoffset-WHx080/0/160/wind_dir_deg"
     name: "Weather Station Wind Direction"
     unit_of_measurement: "degrees"
     icon: "mdi:compass"
-  - platform: mqtt
-    state_topic: "rtl_433/kili/devices/Fineoffset-WHx080/0/160/wind_avg_km_h"
+  -  state_topic: "rtl_433/kili/devices/Fineoffset-WHx080/0/160/wind_avg_km_h"
     name: "Weather Station Wind Speed Average"
     unit_of_measurement: "km/h"
     icon: "mdi:weather-windy-variant"
-  - platform: mqtt
-    state_topic: "rtl_433/kili/devices/Fineoffset-WHx080/0/160/wind_max_km_h"
+  - state_topic: "rtl_433/kili/devices/Fineoffset-WHx080/0/160/wind_max_km_h"
     name: "Weather Station Wind Speed Gust"
     unit_of_measurement: "km/h"
     icon: "mdi:weather-windy"
-  - platform: mqtt
-    state_topic: "rtl_433/kili/devices/Fineoffset-WHx080/0/160/rain_mm"
+  - state_topic: "rtl_433/kili/devices/Fineoffset-WHx080/0/160/rain_mm"
     name: "Weather Station Rain Total"
     unit_of_measurement: "mm"
     icon: "mdi:weather-rainy"

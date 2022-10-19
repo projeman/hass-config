@@ -24,43 +24,39 @@ rest_command:
     content_type: "application/json"
     payload: '{"state": "off", "attributes": {"friendly_name": "Rob In Meeting"}}'
 
-binary_sensor:
-  - platform: mqtt
-    name: "Open MQTT Gateway Status"
+mqtt:
+  binary_sensor:
+  - name: "Open MQTT Gateway Status"
     state_topic: "home/OpenMQTTGateway/LWT"
     payload_on: "online"
     payload_off: "offline"
     device_class: "connectivity"
-  - platform: mqtt
-    name: "Node-RED Eomer Status"
+  - name: "Node-RED Eomer Status"
     state_topic: "nodered/eomer/status"
     payload_on: "online"
     payload_off: "offline"
     device_class: "connectivity"
-  - platform: mqtt
-    name: "Node-RED Fili Status"
+  - name: "Node-RED Fili Status"
     state_topic: "nodered/fili/status"
     payload_on: "online"
     payload_off: "offline"
     device_class: "connectivity"
-  - platform: mqtt
-    name: "Node-RED Balin Status"
+  - name: "Node-RED Balin Status"
     state_topic: "nodered/balin/status"
     payload_on: "online"
     payload_off: "offline"
     device_class: "connectivity"
-  - platform: mqtt
-    name: "Zigbee2mqtt Status"
+  - name: "Zigbee2mqtt Status"
     state_topic: "zigbee2mqtt/bridge/state"
     payload_on: "online"
     payload_off: "offline"
     device_class: "connectivity"
-
-sensor:
-  - platform: mqtt
-    name: "Test Battery"
+  sensor:
+  - name: "Test Battery"
     state_topic: test/battery
     unit_of_measurement: '%'
+
+sensor:
   - platform: template
     sensors:
       kitchen_button_battery:

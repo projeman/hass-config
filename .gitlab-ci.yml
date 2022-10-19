@@ -107,7 +107,7 @@ jsonlint:
 ha-deployed:
   <<: *ha
   image:
-    name: homeassistant/home-assistant:2022.5
+    name: homeassistant/home-assistant:2022.6
     entrypoint: [""]
   allow_failure: true
   needs: []
