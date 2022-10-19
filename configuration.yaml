@@ -25,7 +25,6 @@ logger:
   default: warn
 
 http:
-  base_url: !secret base_url
   ip_ban_enabled: False
   login_attempts_threshold: 5
   use_x_forwarded_for: True
@@ -71,38 +70,6 @@ conversation:
 # System health
 system_health:
 
-# MQTT broker
-mqtt:
-  broker: !secret mqtt_host
-  port: 1883
-  client_id: home-assistant
-  keepalive: 60
-  username: !secret mqtt_username
-  password: !secret mqtt_password
-  protocol: "3.1.1"
-  discovery: true
-  discovery_prefix: homeassistant
-
-#mqtt_eventstream:
-#  publish_topic: !secret es_pub_topic
-#  subscribe_topic: !secret es_sub_topic
-
-#google_assistant:
-#  project_id: !secret ga_project_id
-#  client_id: !secret ga_client_id
-#  access_token: !secret ga_access_token
-#  agent_user_id: !secret ga_agent_user_id
-#  api_key:  !secret ga_api_key
-#  exposed_domains:
-#    - switch
-#    - light
-#    - fan
-#  entity_config:
-#    group.kitchen_downlights:
-#      expose: true
-#    scene.movie:
-#      expose: true
-
 speedtestdotnet:
 
 # include entity files
@@ -110,10 +77,8 @@ sensor: !include entities/sensors.yaml
 binary_sensor: !include entities/binary_sensors.yaml
 climate: !include entities/heating.yaml
 light: !include entities/lights.yaml
-switch: !include entities/switches.yaml
 #camera: !include entities/cameras.yaml
 group: !include entities/groups.yaml
-fan: !include entities/fans.yaml
 timer: !include entities/timers.yaml
 
 # include zones

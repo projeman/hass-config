@@ -1,8 +1,4 @@
 ---
-neato:
-  client_id: !secret neato_client_id
-  client_secret: !secret neato_client_secret
-
 script:
   spot_clean:
     alias: "Spot Clean"
