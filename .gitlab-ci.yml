@@ -156,7 +156,7 @@ deploy:
       - master
   tags:
     - hass
-  needs: ["ha-latest"]
+  needs: ["ha-deployed"]
 
 docker-deploy:
   stage: docker-deploy
