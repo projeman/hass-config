@@ -3,8 +3,6 @@ sun:
 
 
 sensor:
-  - platform: moon
-
   - platform: command_line
     name: North Taranaki Webcam URL
     scan_interval: 900
