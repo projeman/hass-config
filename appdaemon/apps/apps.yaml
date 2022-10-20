@@ -39,16 +39,18 @@ occupancy_simulator:
   step_bedtime_off_3: light.dining_room_spots
 
   # random hall/toilet lights
-  step_night1_name: Night Pt1
-  step_night1_start: !secret night_start_time
-  step_night1_end: "23:59:00"
-  step_night2_name: Night Pt2
-  step_night2_start: "00:00:00"
-  step_night2_end: !secret night_end_time
+  step_night1s_name: Before Midnight Start
+  step_night1s_start: !secret night_start_time
+  step_night1e_name: Before Midnight End
+  step_night1e_start: "23:59:00"
+  step_night2s_name: After Midnight Start
+  step_night2s_start: "00:00:00"
+  step_night2e_name: After Midnight End
+  step_night2e_start: !secret night_end_time
 
   random_night1_name: Hall/Toilet Lights 1
-  random_night1_start: Night Pt1
-  random_night1_end: Night Pt1
+  random_night1_start: Before Midnight Start`
+  random_night1_end: Before Midnight End
   random_night1_minduration: !secret night_minduration
   random_night1_maxduration: !secret night_maxduration
   random_night1_number: !secret night_number
@@ -58,8 +60,8 @@ occupancy_simulator:
   random_night1_off_2: light.toilet
 
   random_night2_name: Hall/Toilet Lights 2
-  random_night2_start: Night Pt2
-  random_night2_end: Night Pt2
+  random_night2_start: After Midnight Start
+  random_night2_end: After Midnight End
   random_night2_minduration: !secret night_minduration
   random_night2_maxduration: !secret night_maxduration
   random_night2_number: !secret night_number
