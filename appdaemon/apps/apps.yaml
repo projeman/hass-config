@@ -7,7 +7,7 @@ occupancy_simulator:
   enable: input_boolean.vacation_mode,on
   test: '1'
   dump_times: '1'
-  reset_time: '10:07:00'
+  reset_time: '00:01:00'
 
   # evening routine
   step_evening_name: Evening
@@ -44,7 +44,7 @@ occupancy_simulator:
   step_night1e_name: Before Midnight End
   step_night1e_start: "23:59:00"
   step_night2s_name: After Midnight Start
-  step_night2s_start: "00:00:00"
+  step_night2s_start: "00:02:00"
   step_night2e_name: After Midnight End
   step_night2e_start: !secret night_end_time
 
