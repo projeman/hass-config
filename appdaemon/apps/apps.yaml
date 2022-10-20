@@ -39,9 +39,14 @@ occupancy_simulator:
   step_bedtime_off_3: light.dining_room_spots
 
   # random hall/toilet lights
+  step_night_name: Night
+  step_night_start: !secret night_start_time
+  step_notnight_name: Not night
+  step_notnight_start: !secret night_end_time
+
   random_night_name: Hall/Toilet Lights
-  random_night_start: !secret night_start_time
-  random_night_end: !secret night_end_time
+  random_night_start: Night
+  random_night_end: Not Night
   random_night_minduration: !secret night_minduration
   random_night_maxduration: !secret night_maxduration
   random_night_number: !secret night_number
