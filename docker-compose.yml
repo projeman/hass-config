@@ -48,16 +48,16 @@ services:
       - homeassistant
     restart: always
 
-  #appdaemon:
-  #  image: acockburn/appdaemon:4.0.3
-  #  ports:
-  #    - 5000:5000
-  #  volumes:
-  #    - /mnt/docker-data/appdaemon:/conf
-  #    - /etc/localtime:/etc/localtime:ro
-  #  depends_on:
-  #    - homeassistant
-  #  restart: always
+  appdaemon:
+    image: acockburn/appdaemon:latest
+    ports:
+      - 5000:5000
+    volumes:
+      - /mnt/docker-data/home-assistant/appdaemon:/conf
+      - /etc/localtime:/etc/localtime:ro
+    depends_on:
+      - homeassistant
+    restart: always
 
   marytts:
     image: sliversniper/marytts

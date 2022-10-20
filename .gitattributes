@@ -5,3 +5,4 @@ entity_registry.yaml filter=git-crypt diff=git-crypt
 shell_commands/secrets.sh filter=git-crypt diff=git-crypt
 .vim/coc-settings.json filter=git-crypt diff=git-crypt
 *.env filter=git-crypt diff=git-crypt
+appdaemon/secrets.yaml filter=git-crypt diff=git-crypt
