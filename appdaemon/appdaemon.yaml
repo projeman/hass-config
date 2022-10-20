@@ -11,5 +11,5 @@ appdaemon:
       token: !secret ha_token
 
 http:
-  url: ad_url
-  password: ad_password
+  url: !secret ad_url
+  password: !secret ad_password
