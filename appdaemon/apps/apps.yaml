@@ -2,10 +2,10 @@
 occupancy_simulator:
   class: OccuSim
   module: occusim
-  log: '1'
+  log_msg: '1'
   notify: '1'
   enable: input_boolean.vacation_mode,on
-  test: '0'
+  test: '1'
   dump_times: '1'
   reset_time: '02:00:00'
 
@@ -37,3 +37,15 @@ occupancy_simulator:
   step_bedtime_off_1: light.kitchen_downlights
   step_bedtime_off_2: light.living_room_spots
   step_bedtime_off_3: light.dining_room_spots
+
+  # random hall/toilet lights
+  random_night_name: Hall/Toilet Lights
+  random_night_start: !secret night_start_time
+  random_night_end: !secret night_end_time
+  random_night_minduration: !secret night_minduration
+  random_night_maxduration: !secret night_max_duration
+  random_night_number: !secret night_number
+  random_night_on_1: light.hallway
+  random_night_on_2: light.toilet
+  random_night_off_1: light.hallway
+  random_night_off_2: light.toilet
