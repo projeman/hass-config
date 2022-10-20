@@ -7,7 +7,7 @@ occupancy_simulator:
   enable: input_boolean.vacation_mode,on
   test: '1'
   dump_times: '1'
-  reset_time: '02:00:00'
+  reset_time: '10:07:00'
 
   # evening routine
   step_evening_name: Evening
@@ -39,19 +39,31 @@ occupancy_simulator:
   step_bedtime_off_3: light.dining_room_spots
 
   # random hall/toilet lights
-  step_night_name: Night
-  step_night_start: !secret night_start_time
-  step_notnight_name: Not Night
-  step_notnight_start: "03:00:00" # this is irrelevant
-  step_notnight_end: !secret night_end_time
+  step_night1_name: Night Pt1
+  step_night1_start: !secret night_start_time
+  step_night1_end: "23:59:00"
+  step_night2_name: Night Pt2
+  step_night2_start: "00:00:00"
+  step_night2_end: !secret night_end_time
 
-  random_night_name: Hall/Toilet Lights
-  random_night_start: Night
-  random_night_end: Not Night
-  random_night_minduration: !secret night_minduration
-  random_night_maxduration: !secret night_maxduration
-  random_night_number: !secret night_number
-  random_night_on_1: light.hallway
-  random_night_on_2: light.toilet
-  random_night_off_1: light.hallway
-  random_night_off_2: light.toilet
+  random_night1_name: Hall/Toilet Lights 1
+  random_night1_start: Night Pt1
+  random_night1_end: Night Pt1
+  random_night1_minduration: !secret night_minduration
+  random_night1_maxduration: !secret night_maxduration
+  random_night1_number: !secret night_number
+  random_night1_on_1: light.hallway
+  random_night1_on_2: light.toilet
+  random_night1_off_1: light.hallway
+  random_night1_off_2: light.toilet
+
+  random_night2_name: Hall/Toilet Lights 2
+  random_night2_start: Night Pt2
+  random_night2_end: Night Pt2
+  random_night2_minduration: !secret night_minduration
+  random_night2_maxduration: !secret night_maxduration
+  random_night2_number: !secret night_number
+  random_night2_on_1: light.hallway
+  random_night2_on_2: light.toilet
+  random_night2_off_1: light.hallway
+  random_night2_off_2: light.toilet
