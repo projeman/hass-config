@@ -43,7 +43,7 @@ occupancy_simulator:
   random_night_start: !secret night_start_time
   random_night_end: !secret night_end_time
   random_night_minduration: !secret night_minduration
-  random_night_maxduration: !secret night_max_duration
+  random_night_maxduration: !secret night_maxduration
   random_night_number: !secret night_number
   random_night_on_1: light.hallway
   random_night_on_2: light.toilet
