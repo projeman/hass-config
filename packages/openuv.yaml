@@ -14,7 +14,8 @@ automation:
     above: 10
   action:
     service: homeassistant.update_entity
-    target: sensor.current_uv_index
+    target:
+      entity_id: sensor.current_uv_index
 
 - id: update_uv_protection_window
   alias: "Update OpenUV protection window once a day"
