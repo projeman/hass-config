@@ -41,8 +41,7 @@ occupancy_simulator:
   # random hall/toilet lights
   step_night_name: Night
   step_night_start: !secret night_start_time
-  step_notnight_name: Not Night
-  step_notnight_start: !secret night_end_time
+  step_night_end: !secret night_end_time
 
   random_night_name: Hall/Toilet Lights
   random_night_start: Night
